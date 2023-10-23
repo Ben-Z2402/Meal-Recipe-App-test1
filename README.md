@@ -1,8 +1,12 @@
 # Meal-Recipe-App
 
-Project Specification for Group # 221
+Team: Liva Lova Java Flava
 
-Team Name: liva lova java flava
+Maintaining a good meal balance is crucial to one's health and well-being. However, roadblocks are inevitable,
+and our ability to prepare balanced meals vary from individual to individual, from day to day. Our team proposes
+a solution to this struggle in the form of a recipe recommender app. Given the user's specified diet and other
+restrictions/nutriment requirements, this program will generate a weekly plan for the user, providing information
+about nutritious value, cost, cooking instructions, and time required for preparation.
 
 Domain: Weight tracker, recipe organizer and price calculator (maybe).
 
