@@ -6,17 +6,12 @@ Maintaining a good meal balance is crucial to one's health and well-being. Howev
 and our ability to prepare balanced meals vary from individual to individual, from day to day. Our team proposes
 a solution to this struggle in the form of a recipe recommender app. Given the user's specified diet and other
 restrictions/nutriment requirements, this program will generate a weekly plan for the user, providing information
-about nutritious value, cost, cooking instructions, and time required for preparation.
+about nutritious value, cost, cooking instructions, and time required for preparation. The user must create a profile
+before they are able to start generating recipes; they will be prompted to enter their measurements and
+list of preferences in a short survey. The user will be able to retake the survey at any time to change
+their user information.
 
 Domain: Weight tracker, recipe organizer and price calculator (maybe).
-
-Shape
-
-Software Specification:
-
-The purpose of this program is to provide the user with a weekly meal plan. Given the user’s specified diet, the program will return recipes that satisfy the user’s health goals. This includes things such as daily calories, protein, carbs, etc. intake. The program will require the user to input their list of preferences and dietary requirements through a survey before generating their desired meal plan. The recipes will consist of ingredients (and list of macronutrients), instructions, time required to cook, and cost.
-
-
 
 User Stories:
 
