@@ -2,7 +2,7 @@ package entity;
 
 import java.util.ArrayList;
 
-public interface meal {
+public interface Meal {
     String getName();
 
     String getDescription();

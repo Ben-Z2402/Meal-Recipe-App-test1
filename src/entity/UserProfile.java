@@ -2,7 +2,7 @@ package entity;
 
 import java.util.ArrayList;
 
-public class userProfile {
+public class UserProfile {
     private float weight;
     private float height;
     private int age;
@@ -10,7 +10,7 @@ public class userProfile {
     private float weeklyBudget;
     private int recommendedDailyCalories;
 
-    public userProfile(float weight, float height, int age, ArrayList<String> dietaryRestrictions, float weeklyBudget,
+    public UserProfile(float weight, float height, int age, ArrayList<String> dietaryRestrictions, float weeklyBudget,
                        int recommendedDailyCalories) {
         this.weight = weight;
         this.height = height;
