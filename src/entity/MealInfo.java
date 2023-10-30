@@ -2,7 +2,7 @@ package entity;
 
 import java.util.ArrayList;
 
-public class mealInfo {
+public class MealInfo {
     private String name;
     private String description;
     private int calories;
@@ -15,7 +15,7 @@ public class mealInfo {
     private float cholestrol;
     private ArrayList<String> ingredients;
 
-    mealInfo(String name, String description, int calories, float price, float carbohydrates, float fat, float protein, float vitamins, float sodium, float cholestrol, ArrayList<String> ingredients) {
+    MealInfo(String name, String description, int calories, float price, float carbohydrates, float fat, float protein, float vitamins, float sodium, float cholestrol, ArrayList<String> ingredients) {
         this.name = name;
         this.description = description;
         this.calories = calories;
