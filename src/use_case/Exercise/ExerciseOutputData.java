@@ -1,4 +1,4 @@
-package Exercise;
+package use_case.Exercise;
 
 public class ExerciseOutputData {
 
