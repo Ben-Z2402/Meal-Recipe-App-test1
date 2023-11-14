@@ -1,8 +1,10 @@
 package use_case.Exercise;
 
+import entity.UserProfile;
+
 public interface ExerciseDataAccessInterface {
 
-    int get(int weight);
+    float get(UserProfile user);
 
 
 }

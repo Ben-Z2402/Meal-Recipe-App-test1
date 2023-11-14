@@ -13,6 +13,8 @@ public class ExerciseInteractor implements ExerciseInputBoundary{
 
     @Override
     public void execute(ExerciseInputData exerciseInputData) {
+        float weight = exerciseInputData.getWeight();
+
 
     }
 }
