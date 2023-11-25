@@ -12,10 +12,11 @@ public class MealInfo {
     private float protein;
     private float vitamins;
     private float sodium;
-    private float cholestrol;
+    private float cholesterol;
     private ArrayList<String> ingredients;
 
-    MealInfo(String name, String description, int calories, float price, float carbohydrates, float fat, float protein, float vitamins, float sodium, float cholestrol, ArrayList<String> ingredients) {
+    MealInfo(String name, String description, int calories, float price, float carbohydrates, float fat, float protein,
+             float vitamins, float sodium, float cholestrol, ArrayList<String> ingredients) {
         this.name = name;
         this.description = description;
         this.calories = calories;
@@ -25,7 +26,7 @@ public class MealInfo {
         this.protein = protein;
         this.vitamins = vitamins;
         this.sodium = sodium;
-        this.cholestrol = cholestrol;
+        this.cholesterol = cholestrol;
         this.ingredients = ingredients;
     }
 
