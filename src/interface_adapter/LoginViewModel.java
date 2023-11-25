@@ -1,7 +1,19 @@
 package interface_adapter;
 
 import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeSupport;
 
-public class LoginViewModel extends ViewModel{
+public class LoginViewModel extends ViewModel {
+    public LoginViewModel(String viewName) {
+        super(viewName);
+    }
+
+    @Override
+    public void firePropertyChanged() {
+
+    }
+
+    @Override
+    public void addPropertyChangeListener(PropertyChangeListener listener) {
+
+    }
 }
