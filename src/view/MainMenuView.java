@@ -9,5 +9,8 @@ import java.awt.event.KeyListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
-public class MainMenuView {
+public class MainMenuView extends JPanel implements ActionListener, PropertyChangeListener{
+    public final String viewName = "main menu";
+    private final MainMenuViewModel mainMenuViewModel;
+
 }
