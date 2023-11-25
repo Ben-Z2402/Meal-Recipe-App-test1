@@ -5,6 +5,7 @@ import entity.MealInfoFactory;
 import entity.UserProfile;
 import entity.UserProfileFactory;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public class WeeklyDietInteractor implements WeeklyDietInputBoundary {
 
@@ -23,13 +24,15 @@ public class WeeklyDietInteractor implements WeeklyDietInputBoundary {
     public void execute(WeeklyDietInputData weeklyDietInputData) {
         LocalDateTime now = LocalDateTime.now();
 
-        UserProfile userProfile = userProfileFactory.create(weeklyDietInputData.getWeight(), weeklyDietInputData.getHeight(),
-                weeklyDietInputData.getAge(), weeklyDietInputData.getDietaryRestrictions(), weeklyDietInputData.getWeeklyBudget(),
-                weeklyDietInputData.getRecommendedDailyCalories());
+        UserProfile userProfile = weeklyDietInputData.getUser();
+        int age = weeklyDietDataAccessObject.getAge(userProfile);
+        float budget = weeklyDietDataAccessObject.getWeeklyBudget(userProfile);
+        float height = weeklyDietDataAccessObject.getHeight(userProfile);
+        float weight = weeklyDietDataAccessObject.getWeight(userProfile);
+        ArrayList<String> dietaryRestrictions = weeklyDietDataAccessObject.getDietaryRestrictions(userProfile);
+        int dailyCals = weeklyDietDataAccessObject.getRecommendedDailyCalories(userProfile);
 
-
-        ...
-
+        weeklyDiet = ...;
 
         WeeklyDietOutputData weeklyDietOutputData = new WeeklyDietOutputData(weeklyDiet, now.toString(), false);
         weeklyDietPresenter.prepareSuccessView(weeklyDietOutputData);
