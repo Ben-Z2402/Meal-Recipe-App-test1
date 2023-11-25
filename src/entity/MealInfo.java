@@ -2,7 +2,7 @@ package entity;
 
 import java.util.ArrayList;
 
-public class MealInfo {
+public class MealInfo implements Meal {
     private String name;
     private String description;
     private int calories;
@@ -30,22 +30,27 @@ public class MealInfo {
         this.ingredients = ingredients;
     }
 
+    @Override
     public String getName() {
         return name;
     }
 
+    @Override
     public String getDescription() {
         return description;
     }
 
+    @Override
     public ArrayList<String> getIngredients() {
         return ingredients;
     }
 
+    @Override
     public float getPrice() {
         return price;
     }
 
+    @Override
     public int getCalories() {
         return calories;
     }
