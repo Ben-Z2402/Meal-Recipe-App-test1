@@ -16,7 +16,7 @@ public class MealInfo {
     private ArrayList<String> ingredients;
 
     MealInfo(String name, String description, int calories, float price, float carbohydrates, float fat, float protein,
-             float vitamins, float sodium, float cholestrol, ArrayList<String> ingredients) {
+             float vitamins, float sodium, float cholesterol, ArrayList<String> ingredients) {
         this.name = name;
         this.description = description;
         this.calories = calories;
@@ -26,7 +26,7 @@ public class MealInfo {
         this.protein = protein;
         this.vitamins = vitamins;
         this.sodium = sodium;
-        this.cholesterol = cholestrol;
+        this.cholesterol = cholesterol;
         this.ingredients = ingredients;
     }
 
