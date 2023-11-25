@@ -1,4 +1,7 @@
 package interface_adapter;
 
-public class LoginViewModel {
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
+
+public class LoginViewModel extends ViewModel{
 }
