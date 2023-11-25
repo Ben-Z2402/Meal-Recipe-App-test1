@@ -1,13 +1,13 @@
 package use_case.DailyCalorieCalculator;
 
 public class DailyCalorieCalculatorOutputData {
-    private final int recCalories;
+    private final double recCalories;
 
-    public DailyCalorieCalculatorOutputData(int recCalories) {
+    public DailyCalorieCalculatorOutputData(double recCalories) {
         this.recCalories = recCalories;
     }
 
-    public int getRecCalories() {
+    public double getRecCalories() {
         return recCalories;
     }
 }

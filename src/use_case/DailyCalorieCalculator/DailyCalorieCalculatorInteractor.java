@@ -11,14 +11,17 @@ public DailyCalorieCalculatorInteractor(DailyCalorieCalculatorOutputBoundary dai
     }
     @Override
     public void execute(DailyCalorieCalculatorInputData dailyCalorieCalculatorInputData) {
-        int weight = dailyCalorieCalculatorInputData.getWeight_lbs();
-        int height = dailyCalorieCalculatorInputData.getHeight();
+        float weight = dailyCalorieCalculatorInputData.getWeight_lbs();
+        float height = dailyCalorieCalculatorInputData.getHeight();
         int age = dailyCalorieCalculatorInputData.getAge();
-        int gender = dailyCalorieCalculatorInputData.getGender();
-        if gender = "male" {
-            double recCalories = (66 + (13.7 * weight) + (5 * height) - (6.8 * age));
-        } else {
-            double recCalories = (int) (655 + (9.6 * weight) + (1.8 * height) - (4.7 * age));
+        String gender = dailyCalorieCalculatorInputData.getGender();
+        double recCalories;
+
+        if (gender.equals("male")) {
+            recCalories = (66 + (13.7 * weight) + (5 * height) - (6.8 * age));
+        }
+        else {
+            recCalories = (655 + (9.6 * weight) + (1.8 * height) - (4.7 * age));
         }
         DailyCalorieCalculatorOutputData dailyCalorieCalculatorOutputData = new DailyCalorieCalculatorOutputData(recCalories);
     }

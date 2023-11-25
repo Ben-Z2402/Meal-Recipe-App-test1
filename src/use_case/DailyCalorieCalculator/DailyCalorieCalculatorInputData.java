@@ -1,12 +1,12 @@
 package use_case.DailyCalorieCalculator;
 
 public class DailyCalorieCalculatorInputData {
-    final private String gender;
-    final private int age;
-    final private float height;
-    final private float weight_lbs;
+    private String gender;
+    private int age;
+    private float height;
+    private float weight_lbs;
 
-    public DailyCalorieCalulatorData(String gender, int age, float height, float weight_lbs) {
+    public void DailyCalorieCalculatorData(String gender, int age, float height, float weight_lbs) {
         this.gender = gender;
         this.age = age;
         this.height = height;
