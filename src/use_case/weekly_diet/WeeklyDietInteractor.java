@@ -1,9 +1,8 @@
 package use_case.weekly_diet;
 
-import entity.MealInfo;
-import entity.MealInfoFactory;
 import entity.UserProfile;
 import entity.UserProfileFactory;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 

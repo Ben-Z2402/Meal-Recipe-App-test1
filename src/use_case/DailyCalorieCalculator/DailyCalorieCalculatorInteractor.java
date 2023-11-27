@@ -1,7 +1,5 @@
 package use_case.DailyCalorieCalculator;
 
-import entity.UserProfile;
-
 public class DailyCalorieCalculatorInteractor implements DailyCalorieCalculatorBoundary {
 
     final DailyCalorieCalculatorOutputBoundary dailyCalorieCalculatorPresenter;

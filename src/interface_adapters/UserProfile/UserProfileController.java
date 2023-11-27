@@ -1,6 +1,8 @@
 package interface_adapters.UserProfile;
+
 import use_case.UserProfile.UserProfileInputBoundary;
 import use_case.UserProfile.UserProfileInputData;
+
 import java.util.ArrayList;
 
 public class UserProfileController {
