@@ -1,16 +1,14 @@
 package use_case.weekly_diet;
 
-import entity.UserProfile;
-
 public class WeeklyDietInputData {
 
-    final private UserProfile user;
+    final private String username;
 
-    public WeeklyDietInputData(UserProfile user) {
-        this.user = user;
+    public WeeklyDietInputData(String username) {
+        this.username = username;
     }
 
-    UserProfile getUser() {
-        return user;
+    String getUsername() {
+        return username;
     }
 }

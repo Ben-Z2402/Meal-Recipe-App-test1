@@ -24,15 +24,22 @@ public class WeeklyDietInteractor implements WeeklyDietInputBoundary {
     public void execute(WeeklyDietInputData weeklyDietInputData) {
         LocalDateTime now = LocalDateTime.now();
 
-        UserProfile userProfile = weeklyDietInputData.getUser();
-        int age = weeklyDietDataAccessObject.getAge(userProfile);
-        float budget = weeklyDietDataAccessObject.getWeeklyBudget(userProfile);
-        float height = weeklyDietDataAccessObject.getHeight(userProfile);
-        float weight = weeklyDietDataAccessObject.getWeight(userProfile);
-        ArrayList<String> dietaryRestrictions = weeklyDietDataAccessObject.getDietaryRestrictions(userProfile);
-        int dailyCals = weeklyDietDataAccessObject.getRecommendedDailyCalories(userProfile);
+        String username = weeklyDietInputData.getUsername();
+        UserProfile userProfile = weeklyDietDataAccessObject.getUserProfile(username);
 
-        weeklyDiet = ...;
+        int age = userProfile.getAge();
+        float budget = userProfile.getWeeklyBudget();
+        float height = userProfile.getHeight();
+        float weight = userProfile.getWeight();
+        ArrayList<String> dietaryRestrictions = userProfile.getDietaryRestrictions();
+        int dailyCals = userProfile.getRecommendedDailyCalories();
+
+        ArrayList<MealInfo> weeklyDiet = new ArrayList<MealInfo>();
+        do {
+            weeklyDiet = ...;
+        } while (weeklyDietDataAccessObject.recipeSaved(weeklyDiet, userProfile));
+
+        weeklyDietDataAccessObject.saveRecipe(weeklyDiet, userProfile);
 
         WeeklyDietOutputData weeklyDietOutputData = new WeeklyDietOutputData(weeklyDiet, now.toString(), false);
         weeklyDietPresenter.prepareSuccessView(weeklyDietOutputData);
