@@ -1,6 +1,7 @@
 package use_case.weekly_diet;
 
 import entity.UserProfile;
+
 import java.util.ArrayList;
 
 public interface WeeklyDietDataAccessInterface {

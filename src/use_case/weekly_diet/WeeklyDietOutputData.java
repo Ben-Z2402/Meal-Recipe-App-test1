@@ -1,6 +1,7 @@
 package use_case.weekly_diet;
 
 import entity.MealInfo;
+
 import java.util.ArrayList;
 
 public class WeeklyDietOutputData {
