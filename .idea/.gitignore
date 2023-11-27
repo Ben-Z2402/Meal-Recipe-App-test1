@@ -6,3 +6,9 @@
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
+<<<<<<< HEAD
+=======
+
+*.xml
+*.iml
+>>>>>>> b3a188c (made some files)
