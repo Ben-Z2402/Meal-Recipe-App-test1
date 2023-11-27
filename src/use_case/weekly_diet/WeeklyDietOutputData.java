@@ -1,12 +1,12 @@
 package use_case.weekly_diet;
 
 import entity.MealInfo;
+
 import java.util.ArrayList;
 
 public class WeeklyDietOutputData {
     private final ArrayList<MealInfo> weeklyDiet;
     private String creationTime;
-
     private boolean useCaseFailed;
 
     public WeeklyDietOutputData(ArrayList<MealInfo> weeklyDiet, String creationTime, boolean useCaseFailed) {
