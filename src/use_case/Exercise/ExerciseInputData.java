@@ -18,7 +18,7 @@ public class ExerciseInputData {
     final private String exerciseType;
 
     final private float duration;
-    final private float weight; // maybe not needed? Get from interactor instead
+    final private float weight;
 
     public ExerciseInputData(String exerciseType, int duration, int weight) {
         this.exerciseType = exerciseType;
