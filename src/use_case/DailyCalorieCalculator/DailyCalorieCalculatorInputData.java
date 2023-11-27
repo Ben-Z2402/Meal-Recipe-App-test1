@@ -6,14 +6,11 @@ public class DailyCalorieCalculatorInputData {
     private float height;
     private float weight_lbs;
 
-    public void DailyCalorieCalculatorData(String gender, int age, float height, float weight_lbs) {
+    public DailyCalorieCalculatorInputData(String gender, int age, float height, float weight_lbs) {
         this.gender = gender;
         this.age = age;
         this.height = height;
         this.weight_lbs = weight_lbs;
-    }
-
-    public DailyCalorieCalculatorInputData() {
     }
 
     String getGender() {return gender;}
