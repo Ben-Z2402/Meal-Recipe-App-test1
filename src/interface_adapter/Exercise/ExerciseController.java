@@ -1,4 +1,4 @@
-package interface_adapter;
+package interface_adapter.Exercise;
 
 import use_case.Exercise.ExerciseInputBoundary;
 import use_case.Exercise.ExerciseInputData;
