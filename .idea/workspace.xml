@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a894a62d-a3e6-4125-b909-05611e6d1e08" name="Changes" comment="untracked files" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="origin/weekly-diet" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="2XBJSlbR0iAU6sTZ2lBmkR11QtR" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/aweso/IdeaProjects/Meal-Recipe-App",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\aweso\IdeaProjects\Meal-Recipe-App" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="interface_adapter" />
+      <recent name="view" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a894a62d-a3e6-4125-b909-05611e6d1e08" name="Changes" comment="" />
+      <created>1698096542536</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1698096542536</updated>
+      <workItem from="1698096543699" duration="4324000" />
+      <workItem from="1698281532417" duration="11000" />
+      <workItem from="1698701302863" duration="4263000" />
+      <workItem from="1699910962731" duration="337000" />
+      <workItem from="1699911409335" duration="360000" />
+      <workItem from="1699911803527" duration="637000" />
+      <workItem from="1699913185442" duration="6438000" />
+      <workItem from="1700938782905" duration="2828000" />
+      <workItem from="1700941646560" duration="10571000" />
+      <workItem from="1701123834483" duration="95000" />
+      <workItem from="1701123961842" duration="4198000" />
+    </task>
+    <task id="LOCAL-00001" summary="copy pasted blueprint">
+      <option name="closed" value="true" />
+      <created>1698097004502</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1698097004502</updated>
+    </task>
+    <task id="LOCAL-00002" summary="wrote out project domain">
+      <option name="closed" value="true" />
+      <created>1698099026444</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1698099026444</updated>
+    </task>
+    <task id="LOCAL-00003" summary="finished domain/specification thing">
+      <option name="closed" value="true" />
+      <created>1698100132122</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1698100132122</updated>
+    </task>
+    <task id="LOCAL-00004" summary="renamed things to follow naming convention">
+      <option name="closed" value="true" />
+      <created>1698701981527</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1698701981527</updated>
+    </task>
+    <task id="LOCAL-00005" summary="changed Meal to an interface">
+      <option name="closed" value="true" />
+      <created>1698702802283</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1698702802283</updated>
+    </task>
+    <task id="LOCAL-00006" summary="worked on weekly diet use case">
+      <option name="closed" value="true" />
+      <created>1700939044184</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1700939044184</updated>
+    </task>
+    <task id="LOCAL-00007" summary="continued weekly diet use case">
+      <option name="closed" value="true" />
+      <created>1700940268766</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1700940268766</updated>
+    </task>
+    <task id="LOCAL-00008" summary="created some files to be implemented">
+      <option name="closed" value="true" />
+      <created>1700941479531</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1700941479531</updated>
+    </task>
+    <task id="LOCAL-00009" summary="implemented the controller for weekly diet">
+      <option name="closed" value="true" />
+      <created>1700943131601</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1700943131601</updated>
+    </task>
+    <task id="LOCAL-00010" summary="created abstract view model">
+      <option name="closed" value="true" />
+      <created>1700943594586</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1700943594586</updated>
+    </task>
+    <task id="LOCAL-00011" summary="merged weekly diet use case into main">
+      <option name="closed" value="true" />
+      <created>1700944781775</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1700944781775</updated>
+    </task>
+    <task id="LOCAL-00012" summary="started recipes view">
+      <option name="closed" value="true" />
+      <created>1701127596231</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1701127596232</updated>
+    </task>
+    <task id="LOCAL-00013" summary="changed input from user to username">
+      <option name="closed" value="true" />
+      <created>1701127767422</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1701127767422</updated>
+    </task>
+    <task id="LOCAL-00014" summary="untracked files">
+      <option name="closed" value="true" />
+      <created>1701127888818</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1701127888818</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="weekly-diet" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="copy pasted blueprint" />
+    <MESSAGE value="wrote out project domain" />
+    <MESSAGE value="finished domain/specification thing" />
+    <MESSAGE value="renamed things to follow naming convention" />
+    <MESSAGE value="changed Meal to an interface" />
+    <MESSAGE value="worked on weekly diet use case" />
+    <MESSAGE value="continued weekly diet use case" />
+    <MESSAGE value="created some files to be implemented" />
+    <MESSAGE value="implemented the controller for weekly diet" />
+    <MESSAGE value="created abstract view model" />
+    <MESSAGE value="merged weekly diet use case into main" />
+    <MESSAGE value="started recipes view" />
+    <MESSAGE value="changed input from user to username" />
+    <MESSAGE value="untracked files" />
+    <option name="LAST_COMMIT_MESSAGE" value="untracked files" />
+  </component>
+</project>

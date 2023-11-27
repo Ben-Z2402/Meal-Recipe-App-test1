@@ -1,0 +1,146 @@
+Index: src/use_case/weekly_diet/WeeklyDietInputData.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package use_case.weekly_diet;\r\n\r\nimport entity.UserProfile;\r\n\r\npublic class WeeklyDietInputData {\r\n\r\n    final private UserProfile user;\r\n\r\n    public WeeklyDietInputData(UserProfile user) {\r\n        this.user = user;\r\n    }\r\n\r\n    UserProfile getUser() {\r\n        return user;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/use_case/weekly_diet/WeeklyDietInputData.java b/src/use_case/weekly_diet/WeeklyDietInputData.java
+--- a/src/use_case/weekly_diet/WeeklyDietInputData.java	(revision 74756f365163bf6221c64544209d05cd733d1647)
++++ b/src/use_case/weekly_diet/WeeklyDietInputData.java	(date 1701126614276)
+@@ -1,16 +1,14 @@
+ package use_case.weekly_diet;
+ 
+-import entity.UserProfile;
+-
+ public class WeeklyDietInputData {
+ 
+-    final private UserProfile user;
++    final private String username;
+ 
+-    public WeeklyDietInputData(UserProfile user) {
+-        this.user = user;
++    public WeeklyDietInputData(String username) {
++        this.username = username;
+     }
+ 
+-    UserProfile getUser() {
+-        return user;
++    String getUsername() {
++        return username;
+     }
+ }
+Index: src/use_case/weekly_diet/WeeklyDietDataAccessInterface.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package use_case.weekly_diet;\r\n\r\nimport entity.UserProfile;\r\nimport java.util.ArrayList;\r\n\r\npublic interface WeeklyDietDataAccessInterface {\r\n\r\n    float getWeeklyBudget(UserProfile userProfile);\r\n\r\n    int getAge(UserProfile userProfile);\r\n\r\n    ArrayList<String> getDietaryRestrictions(UserProfile userProfile);\r\n\r\n    float getHeight(UserProfile userProfile);\r\n\r\n    int getRecommendedDailyCalories(UserProfile userProfile);\r\n\r\n    float getWeight(UserProfile userProfile);\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/use_case/weekly_diet/WeeklyDietDataAccessInterface.java b/src/use_case/weekly_diet/WeeklyDietDataAccessInterface.java
+--- a/src/use_case/weekly_diet/WeeklyDietDataAccessInterface.java	(revision 74756f365163bf6221c64544209d05cd733d1647)
++++ b/src/use_case/weekly_diet/WeeklyDietDataAccessInterface.java	(date 1701126991385)
+@@ -1,19 +1,14 @@
+ package use_case.weekly_diet;
+ 
++import entity.MealInfo;
+ import entity.UserProfile;
+ import java.util.ArrayList;
+ 
+ public interface WeeklyDietDataAccessInterface {
+ 
+-    float getWeeklyBudget(UserProfile userProfile);
+-
+-    int getAge(UserProfile userProfile);
++    UserProfile getUserProfile(String username);
+ 
+-    ArrayList<String> getDietaryRestrictions(UserProfile userProfile);
++    void saveRecipe(ArrayList<MealInfo> recipe, UserProfile userProfile);
+ 
+-    float getHeight(UserProfile userProfile);
+-
+-    int getRecommendedDailyCalories(UserProfile userProfile);
+-
+-    float getWeight(UserProfile userProfile);
++    boolean recipeSaved(ArrayList<MealInfo> recipe, UserProfile userProfile);
+ }
+Index: src/use_case/weekly_diet/WeeklyDietOutputData.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package use_case.weekly_diet;\r\n\r\nimport entity.MealInfo;\r\nimport java.util.ArrayList;\r\n\r\npublic class WeeklyDietOutputData {\r\n    private final ArrayList<MealInfo> weeklyDiet;\r\n    private String creationTime;\r\n\r\n    private boolean useCaseFailed;\r\n\r\n    public WeeklyDietOutputData(ArrayList<MealInfo> weeklyDiet, String creationTime, boolean useCaseFailed) {\r\n        this.weeklyDiet = weeklyDiet;\r\n        this.creationTime = creationTime;\r\n        this.useCaseFailed = useCaseFailed;\r\n    }\r\n\r\n    public ArrayList<MealInfo> getWeeklyDiet() {\r\n        return weeklyDiet;\r\n    }\r\n\r\n    public String getCreationTime() {\r\n        return creationTime;\r\n    }\r\n\r\n    public void setCreationTime(String creationTime) {\r\n        this.creationTime = creationTime;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/use_case/weekly_diet/WeeklyDietOutputData.java b/src/use_case/weekly_diet/WeeklyDietOutputData.java
+--- a/src/use_case/weekly_diet/WeeklyDietOutputData.java	(revision 74756f365163bf6221c64544209d05cd733d1647)
++++ b/src/use_case/weekly_diet/WeeklyDietOutputData.java	(date 1700947939572)
+@@ -6,7 +6,6 @@
+ public class WeeklyDietOutputData {
+     private final ArrayList<MealInfo> weeklyDiet;
+     private String creationTime;
+-
+     private boolean useCaseFailed;
+ 
+     public WeeklyDietOutputData(ArrayList<MealInfo> weeklyDiet, String creationTime, boolean useCaseFailed) {
+Index: src/use_case/weekly_diet/WeeklyDietInteractor.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package use_case.weekly_diet;\r\n\r\nimport entity.MealInfo;\r\nimport entity.MealInfoFactory;\r\nimport entity.UserProfile;\r\nimport entity.UserProfileFactory;\r\nimport java.time.LocalDateTime;\r\nimport java.util.ArrayList;\r\n\r\npublic class WeeklyDietInteractor implements WeeklyDietInputBoundary {\r\n\r\n    final WeeklyDietDataAccessInterface weeklyDietDataAccessObject;\r\n    final WeeklyDietOutputBoundary weeklyDietPresenter;\r\n    final UserProfileFactory userProfileFactory;\r\n\r\n    public WeeklyDietInteractor(WeeklyDietDataAccessInterface weeklyDietDataAccessInterface,\r\n                                WeeklyDietOutputBoundary weeklyDietOutputBoundary, UserProfileFactory userProfileFactory) {\r\n        this.weeklyDietDataAccessObject = weeklyDietDataAccessInterface;\r\n        this.weeklyDietPresenter = weeklyDietOutputBoundary;\r\n        this.userProfileFactory = userProfileFactory;\r\n    }\r\n\r\n    @Override\r\n    public void execute(WeeklyDietInputData weeklyDietInputData) {\r\n        LocalDateTime now = LocalDateTime.now();\r\n\r\n        UserProfile userProfile = weeklyDietInputData.getUser();\r\n        int age = weeklyDietDataAccessObject.getAge(userProfile);\r\n        float budget = weeklyDietDataAccessObject.getWeeklyBudget(userProfile);\r\n        float height = weeklyDietDataAccessObject.getHeight(userProfile);\r\n        float weight = weeklyDietDataAccessObject.getWeight(userProfile);\r\n        ArrayList<String> dietaryRestrictions = weeklyDietDataAccessObject.getDietaryRestrictions(userProfile);\r\n        int dailyCals = weeklyDietDataAccessObject.getRecommendedDailyCalories(userProfile);\r\n\r\n        weeklyDiet = ...;\r\n\r\n        WeeklyDietOutputData weeklyDietOutputData = new WeeklyDietOutputData(weeklyDiet, now.toString(), false);\r\n        weeklyDietPresenter.prepareSuccessView(weeklyDietOutputData);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/use_case/weekly_diet/WeeklyDietInteractor.java b/src/use_case/weekly_diet/WeeklyDietInteractor.java
+--- a/src/use_case/weekly_diet/WeeklyDietInteractor.java	(revision 74756f365163bf6221c64544209d05cd733d1647)
++++ b/src/use_case/weekly_diet/WeeklyDietInteractor.java	(date 1701126991357)
+@@ -24,15 +24,22 @@
+     public void execute(WeeklyDietInputData weeklyDietInputData) {
+         LocalDateTime now = LocalDateTime.now();
+ 
+-        UserProfile userProfile = weeklyDietInputData.getUser();
+-        int age = weeklyDietDataAccessObject.getAge(userProfile);
+-        float budget = weeklyDietDataAccessObject.getWeeklyBudget(userProfile);
+-        float height = weeklyDietDataAccessObject.getHeight(userProfile);
+-        float weight = weeklyDietDataAccessObject.getWeight(userProfile);
+-        ArrayList<String> dietaryRestrictions = weeklyDietDataAccessObject.getDietaryRestrictions(userProfile);
+-        int dailyCals = weeklyDietDataAccessObject.getRecommendedDailyCalories(userProfile);
++        String username = weeklyDietInputData.getUsername();
++        UserProfile userProfile = weeklyDietDataAccessObject.getUserProfile(username);
+ 
+-        weeklyDiet = ...;
++        int age = userProfile.getAge();
++        float budget = userProfile.getWeeklyBudget();
++        float height = userProfile.getHeight();
++        float weight = userProfile.getWeight();
++        ArrayList<String> dietaryRestrictions = userProfile.getDietaryRestrictions();
++        int dailyCals = userProfile.getRecommendedDailyCalories();
++
++        ArrayList<MealInfo> weeklyDiet = new ArrayList<MealInfo>();
++        do {
++            weeklyDiet = ...;
++        } while (weeklyDietDataAccessObject.recipeSaved(weeklyDiet, userProfile));
++
++        weeklyDietDataAccessObject.saveRecipe(weeklyDiet, userProfile);
+ 
+         WeeklyDietOutputData weeklyDietOutputData = new WeeklyDietOutputData(weeklyDiet, now.toString(), false);
+         weeklyDietPresenter.prepareSuccessView(weeklyDietOutputData);
+Index: src/interface_adapter/WeeklyDietController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package interface_adapter;\r\n\r\nimport entity.UserProfile;\r\nimport use_case.weekly_diet.WeeklyDietInputBoundary;\r\nimport use_case.weekly_diet.WeeklyDietInputData;\r\n\r\npublic class WeeklyDietController {\r\n\r\n    final WeeklyDietInputBoundary weeklyDietUseCaseInteractor;\r\n    public WeeklyDietController(WeeklyDietInputBoundary weeklyDietUseCaseInteractor) {\r\n        this.weeklyDietUseCaseInteractor = weeklyDietUseCaseInteractor;\r\n    }\r\n\r\n    public void execute(UserProfile user) {\r\n        WeeklyDietInputData weeklyDietInputData = new WeeklyDietInputData(user);\r\n\r\n        weeklyDietUseCaseInteractor.execute(weeklyDietInputData);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/interface_adapter/WeeklyDietController.java b/src/interface_adapter/WeeklyDietController.java
+--- a/src/interface_adapter/WeeklyDietController.java	(revision 74756f365163bf6221c64544209d05cd733d1647)
++++ b/src/interface_adapter/WeeklyDietController.java	(date 1701126614235)
+@@ -11,8 +11,8 @@
+         this.weeklyDietUseCaseInteractor = weeklyDietUseCaseInteractor;
+     }
+ 
+-    public void execute(UserProfile user) {
+-        WeeklyDietInputData weeklyDietInputData = new WeeklyDietInputData(user);
++    public void execute(String username) {
++        WeeklyDietInputData weeklyDietInputData = new WeeklyDietInputData(username);
+ 
+         weeklyDietUseCaseInteractor.execute(weeklyDietInputData);
+     }
