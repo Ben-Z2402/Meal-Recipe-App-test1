@@ -20,7 +20,7 @@ public class ExerciseInputData {
     final private float duration;
     final private float weight;
 
-    public ExerciseInputData(String exerciseType, int duration, int weight) {
+    public ExerciseInputData(String exerciseType, int duration, float weight) {
         this.exerciseType = exerciseType;
         this.duration = duration;
         this.weight = weight;
