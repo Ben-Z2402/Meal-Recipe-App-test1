@@ -15,7 +15,7 @@ public class ExerciseInteractor implements ExerciseInputBoundary {
     public void execute(ExerciseInputData exerciseInputData) {
         String exerciseType = exerciseInputData.getExerciseType();
         float duration = exerciseInputData.getDuration();
-        float weight = exerciseInputData.getWeight();
+        float weight = exerciseInputData.getWeight(); // change to get using DAO instead.
         int caloriesBurned = 0;
         float MET;
         switch (exerciseType) {
