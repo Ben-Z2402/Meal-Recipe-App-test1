@@ -13,6 +13,9 @@ public class UserProfileInteractor implements UserProfileInputBoundary {
         this.userProfilePresenter = userProfilePresenter;
     }
     public void execute(UserProfileInputData userProfileInputData) {
+        // Below is the information regarding the UserProfile to be created.
+        String username = userProfileInputData.getUsername();
+        String password = userProfileInputData.getPassword();
         float weight = userProfileInputData.getWeight();
         float height = userProfileInputData.getHeight();
         int age = userProfileInputData.getAge();
@@ -20,6 +23,11 @@ public class UserProfileInteractor implements UserProfileInputBoundary {
         float weeklyBudget = userProfileInputData.getWeeklyBudget();
         int recommendedDailyCalories = userProfileInputData.getRecommendedDailyCalories();
 
+        // Creating the new UserProfile;
+        if (this.userProfileDataAccessObject.existsByName("username")) {
+            this.userProfilePresenter.prepareFailView("Username already exists");
+        }
+        else if (this.userProfileDataAccessObject.)
         UserProfile userProfile = new UserProfile(weight, height, age, dietaryRestrictions, weeklyBudget,
                 recommendedDailyCalories);
 

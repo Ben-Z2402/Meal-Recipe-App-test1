@@ -1,9 +1,11 @@
-package interface_adapter;
+package interface_adapter.SignedIn;
+
+import interface_adapter.ViewModel;
 
 import java.beans.PropertyChangeListener;
 
-public class SignupViewModel extends ViewModel {
-    public SignupViewModel(String viewName) {
+public class SignedInViewModel extends ViewModel {
+    public SignedInViewModel(String viewName) {
         super(viewName);
     }
 

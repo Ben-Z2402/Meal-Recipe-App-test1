@@ -1,4 +1,4 @@
-package interface_adapters.UserProfile;
+package interface_adapter.UserProfile;
 
 import use_case.UserProfile.UserProfileInputBoundary;
 import use_case.UserProfile.UserProfileInputData;
@@ -11,11 +11,11 @@ public class UserProfileController {
         this.userProfileUseCaseInteractor = userProfileUseCaseInteractor;
     }
 
-    public void execute(float weight, float height, int age, ArrayList<String> dietaryRestrictions, float weeklyBudget,
-                        int recommendedDailyCalories) {
+    public void execute(String username, String password, float weight, float height, int age,
+                        ArrayList<String> dietaryRestrictions, float weeklyBudget, int recommendedDailyCalories) {
 
-        UserProfileInputData userProfileInputData = new UserProfileInputData(weight, height, age, dietaryRestrictions,
-                weeklyBudget, recommendedDailyCalories);
+        UserProfileInputData userProfileInputData = new UserProfileInputData(username, password, weight, height, age,
+                dietaryRestrictions, weeklyBudget, recommendedDailyCalories);
         this.userProfileUseCaseInteractor.execute(userProfileInputData);
     }
 }

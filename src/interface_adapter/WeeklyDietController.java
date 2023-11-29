@@ -11,8 +11,8 @@ public class WeeklyDietController {
         this.weeklyDietUseCaseInteractor = weeklyDietUseCaseInteractor;
     }
 
-    public void execute(UserProfile user) {
-        WeeklyDietInputData weeklyDietInputData = new WeeklyDietInputData(user);
+    public void execute(String username) {
+        WeeklyDietInputData weeklyDietInputData = new WeeklyDietInputData(username);
 
         weeklyDietUseCaseInteractor.execute(weeklyDietInputData);
     }

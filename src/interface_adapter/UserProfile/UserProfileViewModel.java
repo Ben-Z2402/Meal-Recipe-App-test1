@@ -1,4 +1,4 @@
-package interface_adapters.UserProfile;
+package interface_adapter.UserProfile;
 
 import interface_adapter.ViewModel;
 

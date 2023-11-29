@@ -1,20 +1,15 @@
 package use_case.weekly_diet;
 
+import entity.MealInfo;
 import entity.UserProfile;
 
 import java.util.ArrayList;
 
 public interface WeeklyDietDataAccessInterface {
 
-    float getWeeklyBudget(UserProfile userProfile);
+    UserProfile getUserProfile(String username);
 
-    int getAge(UserProfile userProfile);
+    void saveRecipe(ArrayList<MealInfo> recipe, UserProfile userProfile);
 
-    ArrayList<String> getDietaryRestrictions(UserProfile userProfile);
-
-    float getHeight(UserProfile userProfile);
-
-    int getRecommendedDailyCalories(UserProfile userProfile);
-
-    float getWeight(UserProfile userProfile);
+    boolean recipeSaved(ArrayList<MealInfo> recipe, UserProfile userProfile);
 }
