@@ -3,6 +3,8 @@ package entity;
 import java.util.ArrayList;
 
 public class UserProfile {
+    private String username;
+    private String password;
     private float weight;
     private float height;
     private int age;
@@ -10,8 +12,10 @@ public class UserProfile {
     private float weeklyBudget;
     private int recommendedDailyCalories;
 
-    public UserProfile(float weight, float height, int age, ArrayList<String> dietaryRestrictions, float weeklyBudget,
-                       int recommendedDailyCalories) {
+    public UserProfile(String username, String password, float weight, float height, int age,
+                       ArrayList<String> dietaryRestrictions, float weeklyBudget, int recommendedDailyCalories) {
+        this.username = username;
+        this.password = password;
         this.weight = weight;
         this.height = height;
         this.age = age;
@@ -20,6 +24,8 @@ public class UserProfile {
         this.recommendedDailyCalories = recommendedDailyCalories;
     }
 
+    public String getUsername() { return this.username; }
+    public String getPassword() { return this.password; }
     public float getWeight() {
         return this.weight;
     }
@@ -41,6 +47,8 @@ public class UserProfile {
 
 
 
+    public void setUsername(String username) { this.username = username; }
+    public void setPassword(String password) { this.password = password; }
     public void setWeight(float weight) {
         this.weight = weight;
     }

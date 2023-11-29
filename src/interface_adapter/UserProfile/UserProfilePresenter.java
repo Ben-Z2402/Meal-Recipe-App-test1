@@ -1,6 +1,5 @@
-package interface_adapters.UserProfile;
+package interface_adapter.UserProfile;
 
-import interface_adapter.ViewManagerModel;
 import use_case.UserProfile.UserProfileOutputBoundary;
 import use_case.UserProfile.UserProfileOutputData;
 

@@ -3,6 +3,8 @@ package use_case.UserProfile;
 import java.util.ArrayList;
 
 public class UserProfileInputData {
+    private String username;
+    private String password;
     private float weight;
     private float height;
     private int age;
@@ -10,8 +12,11 @@ public class UserProfileInputData {
     private float weeklyBudget;
     private int recommendedDailyCalories;
 
-    public UserProfileInputData(float weight, float height, int age, ArrayList<String> dietaryRestrictions, float weeklyBudget,
+    public UserProfileInputData(String username, String password, float weight, float height, int age,
+                                ArrayList<String> dietaryRestrictions, float weeklyBudget,
                                 int recommendedDailyCalories) {
+        this.username = username;
+        this.password = password;
         this.weight = weight;
         this.height = height;
         this.age = age;
@@ -19,6 +24,8 @@ public class UserProfileInputData {
         this.weeklyBudget = weeklyBudget;
         this.recommendedDailyCalories = recommendedDailyCalories;
     }
+    public String getUsername() { return this.username; }
+    public String getPassword() { return this.password; }
     public float getWeight() {
         return this.weight;
     }
@@ -36,26 +43,5 @@ public class UserProfileInputData {
     }
     public int getRecommendedDailyCalories() {
         return recommendedDailyCalories;
-    }
-
-
-
-    public void setWeight(float weight) {
-        this.weight = weight;
-    }
-    public void setHeight(float height) {
-        this.height = height;
-    }
-    public void setAge(int age) {
-        this.age = age;
-    }
-    public void setDietaryRestrictions(ArrayList<String> dietaryRestrictions) {
-        this.dietaryRestrictions = dietaryRestrictions;
-    }
-    public void setWeeklyBudget(float weeklyBudget) {
-        this.weeklyBudget = weeklyBudget;
-    }
-    public void setRecommendedDailyCalories(int recommendedDailyCalories) {
-        this.recommendedDailyCalories = recommendedDailyCalories;
     }
 }

@@ -1,4 +1,4 @@
-package interface_adapter;
+package interface_adapter.Recipes;
 
 import use_case.weekly_diet.WeeklyDietOutputBoundary;
 import use_case.weekly_diet.WeeklyDietOutputData;
