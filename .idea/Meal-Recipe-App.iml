@@ -10,5 +10,6 @@
     <orderEntry type="library" name="ejlchina.okhttps1" level="project" />
     <orderEntry type="library" name="ai.ost.fastjson.protobuf" level="project" />
     <orderEntry type="library" name="json" level="project" />
+    <orderEntry type="library" name="ejlchina.okhttps.fastjson" level="project" />
   </component>
 </module>

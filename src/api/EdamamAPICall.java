@@ -6,11 +6,10 @@ import com.alibaba.fastjson.JSONObject;
 import okhttp3.*;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Dictionary;
 import java.util.Hashtable;
 
-public class callAPI {
+public class EdamamAPICall {
 
     // This is the API URL with the API key and API ID
     private static final String API_URL = "https://api.edamam.com/api/recipes/v2?type=public&app_id=981e8b83&" +
