@@ -44,27 +44,4 @@ public class UserProfile {
     public int getRecommendedDailyCalories() {
         return recommendedDailyCalories;
     }
-
-
-
-    public void setUsername(String username) { this.username = username; }
-    public void setPassword(String password) { this.password = password; }
-    public void setWeight(float weight) {
-        this.weight = weight;
-    }
-    public void setHeight(float height) {
-        this.height = height;
-    }
-    public void setAge(int age) {
-        this.age = age;
-    }
-    public void setDietaryRestrictions(ArrayList<String> dietaryRestrictions) {
-        this.dietaryRestrictions = dietaryRestrictions;
-    }
-    public void setWeeklyBudget(float weeklyBudget) {
-        this.weeklyBudget = weeklyBudget;
-    }
-    public void setRecommendedDailyCalories(int recommendedDailyCalories) {
-        this.recommendedDailyCalories = recommendedDailyCalories;
-    }
 }
