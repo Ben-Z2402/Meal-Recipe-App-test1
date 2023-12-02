@@ -5,17 +5,19 @@ import java.util.ArrayList;
 public class UserProfile {
     private String username;
     private String password;
+    private String gender;
     private float weight;
     private float height;
     private int age;
     private ArrayList<String> dietaryRestrictions;
     private float weeklyBudget;
-    private int recommendedDailyCalories;
+    private float recommendedDailyCalories;
 
-    public UserProfile(String username, String password, float weight, float height, int age,
-                       ArrayList<String> dietaryRestrictions, float weeklyBudget, int recommendedDailyCalories) {
+    public UserProfile(String username, String password, String gender, float weight, float height, int age,
+                       ArrayList<String> dietaryRestrictions, float weeklyBudget, float recommendedDailyCalories) {
         this.username = username;
         this.password = password;
+        this.gender = gender;
         this.weight = weight;
         this.height = height;
         this.age = age;
@@ -26,6 +28,9 @@ public class UserProfile {
 
     public String getUsername() { return this.username; }
     public String getPassword() { return this.password; }
+    public String getGender() {
+        return this.gender;
+    }
     public float getWeight() {
         return this.weight;
     }
@@ -41,7 +46,7 @@ public class UserProfile {
     public float getWeeklyBudget() {
         return this.weeklyBudget;
     }
-    public int getRecommendedDailyCalories() {
+    public float getRecommendedDailyCalories() {
         return recommendedDailyCalories;
     }
 }
