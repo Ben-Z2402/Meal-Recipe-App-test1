@@ -5,7 +5,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
-
 public class NutritionixAPICall {
     public static void main(String[] args) throws IOException {
         NutritionixAPICall apicall = new NutritionixAPICall();

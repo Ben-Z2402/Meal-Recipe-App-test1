@@ -7,6 +7,7 @@ import okhttp3.*;
 
 import java.io.IOException;
 import java.util.Dictionary;
+import java.util.Enumeration;
 import java.util.Hashtable;
 
 public class EdamamAPICall {
@@ -33,9 +34,11 @@ public class EdamamAPICall {
     //This method adds the parameters to the API URL from a dictionary
     private static String queryAdder(Dictionary query) {
         HttpUrl.Builder urlBuilder = HttpUrl.parse(API_URL).newBuilder();
+        Enumeration k = query.keys();
+        Enumeration v = query.elements();
 
         for (int i = 0; i < query.size(); i++) {
-            urlBuilder.addQueryParameter((String) query.keys().nextElement(), (String) query.elements().nextElement());
+            urlBuilder.addQueryParameter((String) k.nextElement(), (String) v.nextElement());
         }
 
         String url = urlBuilder.build().toString();
@@ -51,7 +54,9 @@ public class EdamamAPICall {
             JSONObject recipe = hit.getJSONObject("recipe");
             String label = recipe.getString("label");
             String url = recipe.getString("url");
-            System.out.println(label + ": " + url);
+            double calories = recipe.getDouble("calories");
+            String yield = recipe.getString("yield");
+            System.out.println(label + ": " + url + " calories per serving: " + calories);
         }
     }
 
