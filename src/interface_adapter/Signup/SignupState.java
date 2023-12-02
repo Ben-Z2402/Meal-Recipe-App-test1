@@ -1,5 +1,7 @@
 package interface_adapter.Signup;
 
+import java.util.ArrayList;
+
 public class SignupState {
     private String username = "";
     private String usernameError = null;
@@ -7,6 +9,12 @@ public class SignupState {
     private String passwordError = null;
     private String repeatPassword = "";
     private String repeatPasswordError = null;
+    private float weight = 0;
+    private float height = 0;
+    private int age = 0;
+    private ArrayList<String> dietaryRestrictions = new ArrayList<>();
+    private float weeklyBudget = 0;
+    private int recommendedDailyCalories = 0;
 
     public SignupState(SignupState copy) {
         username = copy.username;
@@ -15,14 +23,16 @@ public class SignupState {
         passwordError = copy.passwordError;
         repeatPassword = copy.repeatPassword;
         repeatPasswordError = copy.repeatPasswordError;
+        weight = copy.weight;
+        height = copy.height;
+        age = copy.age;
+        dietaryRestrictions = copy.dietaryRestrictions;
+        weeklyBudget = copy.weeklyBudget;
+        recommendedDailyCalories = copy.recommendedDailyCalories;
     }
 
     // Because of the previous copy constructor, the default constructor must be explicit.
     public SignupState() {
-    }
-
-    public String getUsername() {
-        return username;
     }
 
     public String getUsernameError() {
@@ -43,6 +53,15 @@ public class SignupState {
 
     public String getRepeatPasswordError() {
         return repeatPasswordError;
+    }
+    public float getWeight() { return weight; }
+    public float getHeight() { return height; }
+    public int getAge() { return age; }
+    public ArrayList<String> getDietaryRestrictions() { return dietaryRestrictions; }
+    public float getWeeklyBudget() { return weeklyBudget; }
+    public int getRecommendedDailyCalories() { return recommendedDailyCalories; }
+    public String getUsername() {
+        return username;
     }
 
     public void setUsername(String username) {
@@ -68,6 +87,15 @@ public class SignupState {
     public void setRepeatPasswordError(String repeatPasswordError) {
         this.repeatPasswordError = repeatPasswordError;
     }
+    public void setWeight(float weight) { this.weight = weight; }
+    public void setHeight(float height) { this.height = height; }
+    public void setAge(int age) { this.age = age; }
+    public void setDietaryRestrictions(ArrayList<String> dietaryRestrictions) {
+        this.dietaryRestrictions = dietaryRestrictions; }
+    public void setWeeklyBudget(float weeklyBudget) { this.weeklyBudget = weeklyBudget; }
+    public void setRecommendedDailyCalories(int recommendedDailyCalories) {
+        this.recommendedDailyCalories = recommendedDailyCalories; }
+
 
     @Override
     public String toString() {
