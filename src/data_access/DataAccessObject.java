@@ -102,7 +102,6 @@ public class DataAccessObject implements ExerciseDataAccessInterface, LoginUserD
                 writer.write(line);
                 writer.newLine();
             }
-
             writer.close();
 
         } catch (IOException e) {

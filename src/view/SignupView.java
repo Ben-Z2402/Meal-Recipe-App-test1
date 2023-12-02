@@ -20,6 +20,12 @@ public class SignupView extends JPanel implements ActionListener, PropertyChange
     private final JTextField usernameInputField = new JTextField(15);
     private final JPasswordField passwordInputField = new JPasswordField(15);
     private final JPasswordField repeatPasswordInputField = new JPasswordField(15);
+    private final JTextField weightInputField = new JTextField(15);
+    private final JTextField heightInputField = new JTextField(15);
+    private final JTextField ageInputField = new JTextField(15);
+    private final JButton dietaryRestrictions;
+    private final JTextField weeklyBudgetInputField = new JTextField(15);
+
     private final SignupController signupController;
 
     private final JButton signUp;
@@ -40,12 +46,21 @@ public class SignupView extends JPanel implements ActionListener, PropertyChange
                 new JLabel(signupViewModel.PASSWORD_LABEL), passwordInputField);
         LabelTextPanel repeatPasswordInfo = new LabelTextPanel(
                 new JLabel(signupViewModel.REPEAT_PASSWORD_LABEL), repeatPasswordInputField);
-
+        LabelTextPanel weightInfo = new LabelTextPanel(
+                new JLabel(signupViewModel.WEIGHT_LABEL), weightInputField);
+        LabelTextPanel heightInfo = new LabelTextPanel(
+                new JLabel(signupViewModel.HEIGHT_LABEL), heightInputField);
+        LabelTextPanel ageInfo = new LabelTextPanel(
+                new JLabel(signupViewModel.AGE_LABEL), ageInputField);
+        LabelTextPanel weeklyBudgetInfo = new LabelTextPanel(
+                new JLabel(signupViewModel.WEEKLY_BUDGET_LABEL), weeklyBudgetInputField);
         JPanel buttons = new JPanel();
         signUp = new JButton(signupViewModel.SIGNUP_BUTTON_LABEL);
         buttons.add(signUp);
         cancel = new JButton(signupViewModel.CANCEL_BUTTON_LABEL);
         buttons.add(cancel);
+        dietaryRestrictions = new JButton(signupViewModel.DIETARY_RESTRICTIONS_LABEL);
+        buttons.add(dietaryRestrictions);
 
         signUp.addActionListener(
                 // This creates an anonymous subclass of ActionListener and instantiates it.
@@ -55,7 +70,13 @@ public class SignupView extends JPanel implements ActionListener, PropertyChange
                             SignupState currentState = signupViewModel.getState();
                             signupController.execute(currentState.getUsername(),
                                     currentState.getPassword(),
-                                    currentState.getRepeatPassword());
+                                    currentState.getRepeatPassword(),
+                                    currentState.getWeight(),
+                                    currentState.getHeight(),
+                                    currentState.getAge(),
+                                    currentState.getDietaryRestrictions(),
+                                    currentState.getWeeklyBudget(),
+                                    currentState.getRecommendedDailyCalories());
                         }
                     }
                 }
@@ -117,6 +138,86 @@ public class SignupView extends JPanel implements ActionListener, PropertyChange
                     public void keyReleased(KeyEvent e) {
                     }
                 });
+        weightInputField.addKeyListener(
+                new KeyListener() {
+                    @Override
+                    public void keyTyped(KeyEvent e) {
+                        SignupState currentState = signupViewModel.getState();
+                        currentState.setWeight(Integer.valueOf(weightInputField.getText()) + e.getKeyChar());
+                        signupViewModel.setState(currentState);
+                    }
+
+                    @Override
+                    public void keyPressed(KeyEvent e) {
+
+                    }
+
+                    @Override
+                    public void keyReleased(KeyEvent e) {
+
+                    }
+                }
+        );
+        heightInputField.addKeyListener(
+                new KeyListener() {
+                    @Override
+                    public void keyTyped(KeyEvent e) {
+                        SignupState currentState = signupViewModel.getState();
+                        currentState.setWeight(Integer.valueOf(heightInputField.getText()) + e.getKeyChar());
+                        signupViewModel.setState(currentState);
+                    }
+
+                    @Override
+                    public void keyPressed(KeyEvent e) {
+
+                    }
+
+                    @Override
+                    public void keyReleased(KeyEvent e) {
+
+                    }
+                }
+        );
+        ageInputField.addKeyListener(
+                new KeyListener() {
+                    @Override
+                    public void keyTyped(KeyEvent e) {
+                        SignupState currentState = signupViewModel.getState();
+                        currentState.setWeight(Integer.valueOf(ageInputField.getText()) + e.getKeyChar());
+                        signupViewModel.setState(currentState);
+                    }
+
+                    @Override
+                    public void keyPressed(KeyEvent e) {
+
+                    }
+
+                    @Override
+                    public void keyReleased(KeyEvent e) {
+
+                    }
+                }
+        );
+        weeklyBudgetInputField.addKeyListener(
+                new KeyListener() {
+                    @Override
+                    public void keyTyped(KeyEvent e) {
+                        SignupState currentState = signupViewModel.getState();
+                        currentState.setWeight(Integer.valueOf(weeklyBudgetInputField.getText()) + e.getKeyChar());
+                        signupViewModel.setState(currentState);
+                    }
+
+                    @Override
+                    public void keyPressed(KeyEvent e) {
+
+                    }
+
+                    @Override
+                    public void keyReleased(KeyEvent e) {
+
+                    }
+                }
+        );
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
@@ -141,4 +242,6 @@ public class SignupView extends JPanel implements ActionListener, PropertyChange
             JOptionPane.showMessageDialog(this, state.getUsernameError());
         }
     }
+
+
 }

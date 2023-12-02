@@ -1,24 +1,20 @@
 package use_case.Signup;
 import entity.UserProfile;
 import entity.UserProfileFactory;
-import use_case.Signup.SignupInputBoundary;
-import use_case.Signup.SignupInputData;
-import use_case.Signup.SignupUserDataAccessInterface;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class SignupInteractor implements SignupInputBoundary {
     final SignupUserDataAccessInterface userDataAccessObject;
     final SignupOutputBoundary userPresenter;
-    final UserProfileFactory userFactory;
+    final UserProfileFactory userProfileFactory;
 
     public SignupInteractor(SignupUserDataAccessInterface signupDataAccessInterface,
                             SignupOutputBoundary signupOutputBoundary,
-                            UserProfileFactory userFactory) {
+                            UserProfileFactory userProfileFactory) {
         this.userDataAccessObject = signupDataAccessInterface;
         this.userPresenter = signupOutputBoundary;
-        this.userFactory = userFactory;
+        this.userProfileFactory = userProfileFactory;
     }
 
     @Override
@@ -40,11 +36,11 @@ public class SignupInteractor implements SignupInputBoundary {
         } else {
             // check that the passwords are equal.
             assert (password.equals(repeatPassword));
-            UserProfile user = userFactory.create(username, password, weight, height, age, dietaryRestrictions,
+            UserProfile user = userProfileFactory.create(username, password, weight, height, age, dietaryRestrictions,
                     weeklyBudget, recommendedDailyCalories);
             userDataAccessObject.save(user);
 
-            SignupOutputData signupOutputData = new SignupOutputData(user.getName(), now.toString(), false);
+            SignupOutputData signupOutputData = new SignupOutputData(user.getUsername(), false);
             userPresenter.prepareSuccessView(signupOutputData);
         }
     }

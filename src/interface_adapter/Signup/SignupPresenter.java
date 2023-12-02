@@ -1,14 +1,9 @@
 package interface_adapter.Signup;
-
-
 import interface_adapter.Login.LoginState;
 import interface_adapter.Login.LoginViewModel;
 import interface_adapter.ViewManagerModel;
 import use_case.Signup.SignupOutputBoundary;
 import use_case.Signup.SignupOutputData;
-
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 public class SignupPresenter implements SignupOutputBoundary {
 
@@ -23,13 +18,9 @@ public class SignupPresenter implements SignupOutputBoundary {
         this.signupViewModel = signupViewModel;
         this.loginViewModel = loginViewModel;
     }
-
     @Override
     public void prepareSuccessView(SignupOutputData response) {
         // On success, switch to the login view.
-        LocalDateTime responseTime = LocalDateTime.parse(response.getCreationTime());
-        response.setCreationTime(responseTime.format(DateTimeFormatter.ofPattern("hh:mm:ss")));
-
         LoginState loginState = loginViewModel.getState();
         loginState.setUsername(response.getUsername());
         this.loginViewModel.setState(loginState);
@@ -38,7 +29,6 @@ public class SignupPresenter implements SignupOutputBoundary {
         viewManagerModel.setActiveView(loginViewModel.getViewName());
         viewManagerModel.firePropertyChanged();
     }
-
     @Override
     public void prepareFailView(String error) {
         SignupState signupState = signupViewModel.getState();
@@ -46,3 +36,4 @@ public class SignupPresenter implements SignupOutputBoundary {
         signupViewModel.firePropertyChanged();
     }
 }
+
