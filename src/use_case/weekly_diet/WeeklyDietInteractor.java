@@ -2,12 +2,14 @@ package use_case.weekly_diet;
 
 import api.EdamamAPICall;
 import api.NutritionixAPICall;
+import com.alibaba.fastjson.JSONException;
 import entity.MealInfo;
 import entity.UserProfile;
 import entity.UserProfileFactory;
 import interface_adapter.DailyCalorieCalculatorController;
 import use_case.DailyCalorieCalculator.DailyCalorieCalculatorInteractor;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Dictionary;
@@ -65,7 +67,13 @@ public class WeeklyDietInteractor implements WeeklyDietInputBoundary {
                 query.put("health", dietaryRestrictions.get(i));
             }
 
-            EdamamAPICall.RecipeUrl(query);
+            try {
+                EdamamAPICall.RecipeUrl(query);
+            } catch (JSONException e) {
+                throw new RuntimeException(e);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
             MealInfo recipe = new MealInfo();
 
             if (!weeklyDietDataAccessObject.recipeSaved(recipe, userProfile)) {
