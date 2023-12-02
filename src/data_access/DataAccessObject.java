@@ -22,12 +22,13 @@ public class DataAccessObject implements ExerciseDataAccessInterface, LoginUserD
         this.csvFile = new File(csvPath);
         this.headers.put("username", 0);
         this.headers.put("password", 1);
-        this.headers.put("weight", 2);
-        this.headers.put("height", 3);
-        this.headers.put("age", 4);
-        this.headers.put("dietaryRestrictions", 5);
-        this.headers.put("weeklyBudget", 6);
-        this.headers.put("recommendedDailyCalories", 7);
+        this.headers.put("gender", 2);
+        this.headers.put("weight", 3);
+        this.headers.put("height", 4);
+        this.headers.put("age", 5);
+        this.headers.put("dietaryRestrictions", 6);
+        this.headers.put("weeklyBudget", 7);
+        this.headers.put("recommendedDailyCalories", 8);
 
         if (csvFile.length() == 0) {
             save();
@@ -37,7 +38,7 @@ public class DataAccessObject implements ExerciseDataAccessInterface, LoginUserD
                 String header = reader.readLine();
 
                 // For later: clean this up by creating a new Exception subclass and handling it in the UI.
-                assert header.equals("username,password,weight,height,age,dietaryRestrictions,weeklyBudget," +
+                assert header.equals("username,password,gender,weight,height,age,dietaryRestrictions,weeklyBudget," +
                         "recommendedDailyCalories");
 
                 String row;
@@ -45,6 +46,7 @@ public class DataAccessObject implements ExerciseDataAccessInterface, LoginUserD
                     String[] col = row.split(",");
                     String username = String.valueOf(col[headers.get("username")]);
                     String password = String.valueOf(col[headers.get("password")]);
+                    String gender = String.valueOf(col[headers.get("gender")]);
                     float weight = Float.parseFloat(col[headers.get("weight")]);
                     float height = Float.parseFloat(col[headers.get("height")]);
                     int age = Integer.parseInt(col[headers.get("age")]);
@@ -55,8 +57,8 @@ public class DataAccessObject implements ExerciseDataAccessInterface, LoginUserD
                     ArrayList<String> dietaryRestrictions = new ArrayList<>(Arrays.asList(elements));
                     ////////////////////////////
                     float weeklyBudget = Float.parseFloat(col[headers.get("weeklyBudget")]);
-                    int recommendedDailyCalories = Integer.parseInt(col[headers.get("recommendedDailyCalories")]);
-                    UserProfile user = userProfileFactory.create(username, password, weight, height, age,
+                    float recommendedDailyCalories = Integer.parseInt(col[headers.get("recommendedDailyCalories")]);
+                    UserProfile user = userProfileFactory.create(username, password, gender, weight, height, age,
                             dietaryRestrictions, weeklyBudget, recommendedDailyCalories);
                     accounts.put(username, user);
                 }
