@@ -20,7 +20,7 @@ public class EdamamAPICall {
         // This is an example of how parameters should be given to the API
         Dictionary<String, Object> query = new Hashtable<>();
         query.put("mealType", "Breakfast");
-        query.put("calories", "100-300");
+        query.put("calories", "100-300"); // gives recipes that have 100-300 calories per serving.
 
         try {
             RecipeUrl(query);
@@ -55,8 +55,8 @@ public class EdamamAPICall {
             String label = recipe.getString("label");
             String url = recipe.getString("url");
             double calories = recipe.getDouble("calories");
-            String yield = recipe.getString("yield");
-            System.out.println(label + ": " + url + " calories per serving: " + calories);
+            double yield = recipe.getDouble("yield");
+            System.out.println(label + ": " + url + " calories per serving: " + calories / yield);
         }
     }
 
