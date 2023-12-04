@@ -28,26 +28,13 @@ public class ExerciseInputData {
     Swimming: laps, vigorous - 9.9
     */
 
-    final private String exerciseType;
+    final private String exercisePerformed;
 
-    final private float duration;
-    final private float weight;
-
-    public ExerciseInputData(String exerciseType, int duration, float weight) {
-        this.exerciseType = exerciseType;
-        this.duration = duration;
-        this.weight = weight;
+    public ExerciseInputData(String exercisePerformed) {
+        this.exercisePerformed = exercisePerformed;
     }
 
-    public String getExerciseType() {
-        return exerciseType;
-    }
-
-    public float getDuration() {
-        return duration;
-    }
-
-    public float getWeight() {
-        return weight;
+    public String getExercisePerformed() {
+        return exercisePerformed;
     }
 }
