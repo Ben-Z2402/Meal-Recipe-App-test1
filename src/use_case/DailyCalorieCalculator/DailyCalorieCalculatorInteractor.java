@@ -4,9 +4,9 @@ public class DailyCalorieCalculatorInteractor implements DailyCalorieCalculatorB
 
     final DailyCalorieCalculatorOutputBoundary dailyCalorieCalculatorPresenter;
 
-public DailyCalorieCalculatorInteractor(DailyCalorieCalculatorOutputBoundary dailyCalorieCalculatorPresenter) {
-        this.dailyCalorieCalculatorPresenter = dailyCalorieCalculatorPresenter;
-    }
+    public DailyCalorieCalculatorInteractor(DailyCalorieCalculatorOutputBoundary dailyCalorieCalculatorPresenter) {
+            this.dailyCalorieCalculatorPresenter = dailyCalorieCalculatorPresenter;
+        }
     @Override
     public void execute(DailyCalorieCalculatorInputData dailyCalorieCalculatorInputData) {
         float weight = dailyCalorieCalculatorInputData.getWeight_lbs();
@@ -22,5 +22,6 @@ public DailyCalorieCalculatorInteractor(DailyCalorieCalculatorOutputBoundary dai
             recCalories = (655 + (9.6 * weight) + (1.8 * height) - (4.7 * age));
         }
         DailyCalorieCalculatorOutputData dailyCalorieCalculatorOutputData = new DailyCalorieCalculatorOutputData(recCalories);
+        dailyCalorieCalculatorPresenter.prepareSuccessView(dailyCalorieCalculatorOutputData);
     }
 }
