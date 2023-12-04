@@ -7,7 +7,7 @@ import interface_adapter.Login.LoginViewModel;
 import interface_adapter.Signup.SignupViewModel;
 import interface_adapter.ViewManagerModel;
 
-import view.LoggedInView;
+//import view.LoggedInView;
 import view.LoginView;
 import view.SignupView;
 import view.ViewManager;
@@ -34,11 +34,11 @@ public class Main {
         frame.setVisible(true);
 
         JPanel views = new JPanel(cardLayout);
-        frame.add(views);
+        frame.add(currentView);
 
         // The ViewManager model controls which of the view are currently being displayed.
         ViewManagerModel viewManagerModel = new ViewManagerModel();
-        new ViewManager(views, cardLayout, viewManagerModel);
+        new ViewManager(currentView, cardLayout, viewManagerModel);
 
         // The data for the views, such as username and password, are in the ViewModels.
         // This information will be changed by a presenter object that is reporting the

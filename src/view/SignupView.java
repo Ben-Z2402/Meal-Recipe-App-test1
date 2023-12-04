@@ -20,6 +20,7 @@ public class SignupView extends JPanel implements ActionListener, PropertyChange
     private final JTextField usernameInputField = new JTextField(15);
     private final JPasswordField passwordInputField = new JPasswordField(15);
     private final JPasswordField repeatPasswordInputField = new JPasswordField(15);
+    private final JTextField genderInputField = new JTextField(15);
     private final JTextField weightInputField = new JTextField(15);
     private final JTextField heightInputField = new JTextField(15);
     private final JTextField ageInputField = new JTextField(15);
@@ -46,6 +47,9 @@ public class SignupView extends JPanel implements ActionListener, PropertyChange
                 new JLabel(signupViewModel.PASSWORD_LABEL), passwordInputField);
         LabelTextPanel repeatPasswordInfo = new LabelTextPanel(
                 new JLabel(signupViewModel.REPEAT_PASSWORD_LABEL), repeatPasswordInputField);
+        LabelTextPanel genderInfo = new LabelTextPanel(
+                new JLabel(signupViewModel.GENDER_LABEL), genderInputField);
+
         LabelTextPanel weightInfo = new LabelTextPanel(
                 new JLabel(signupViewModel.WEIGHT_LABEL), weightInputField);
         LabelTextPanel heightInfo = new LabelTextPanel(
@@ -83,6 +87,7 @@ public class SignupView extends JPanel implements ActionListener, PropertyChange
                             signupController.execute(currentState.getUsername(),
                                     currentState.getPassword(),
                                     currentState.getRepeatPassword(),
+                                    currentState.getGender(),
                                     currentState.getWeight(),
                                     currentState.getHeight(),
                                     currentState.getAge(),
@@ -150,6 +155,24 @@ public class SignupView extends JPanel implements ActionListener, PropertyChange
                     public void keyReleased(KeyEvent e) {
                     }
                 });
+        genderInputField.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                SignupState currentState = signupViewModel.getState();
+                currentState.setGender(genderInputField.getText() + e.getKeyChar());
+                signupViewModel.setState(currentState);
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+            }
+        });
         weightInputField.addKeyListener(
                 new KeyListener() {
                     @Override
@@ -175,7 +198,7 @@ public class SignupView extends JPanel implements ActionListener, PropertyChange
                     @Override
                     public void keyTyped(KeyEvent e) {
                         SignupState currentState = signupViewModel.getState();
-                        currentState.setWeight(Float.valueOf(heightInputField.getText() + e.getKeyChar()));
+                        currentState.setHeight(Float.valueOf(heightInputField.getText() + e.getKeyChar()));
                         signupViewModel.setState(currentState);
                     }
 
@@ -195,7 +218,7 @@ public class SignupView extends JPanel implements ActionListener, PropertyChange
                     @Override
                     public void keyTyped(KeyEvent e) {
                         SignupState currentState = signupViewModel.getState();
-                        currentState.setWeight(Integer.valueOf(ageInputField.getText() + e.getKeyChar()));
+                        currentState.setAge(Integer.valueOf(ageInputField.getText() + e.getKeyChar()));
                         signupViewModel.setState(currentState);
                     }
 
@@ -215,7 +238,7 @@ public class SignupView extends JPanel implements ActionListener, PropertyChange
                     @Override
                     public void keyTyped(KeyEvent e) {
                         SignupState currentState = signupViewModel.getState();
-                        currentState.setWeight(Float.valueOf(weeklyBudgetInputField.getText() + e.getKeyChar()));
+                        currentState.setWeeklyBudget(Float.valueOf(weeklyBudgetInputField.getText() + e.getKeyChar()));
                         signupViewModel.setState(currentState);
                     }
 
