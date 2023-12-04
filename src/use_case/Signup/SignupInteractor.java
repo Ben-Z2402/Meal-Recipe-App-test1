@@ -37,9 +37,9 @@ public class SignupInteractor implements SignupInputBoundary {
         } else if (gender.equals("Male") && !signupInputData.getGender().equals("Female")) {
             userPresenter.prepareFailView("Input either \"Male\" or \"Female\".");
         } else if ((0.0 <= weight) && (weight <= 300.0)) {
-            userPresenter.prepareFailView("Enter a weight between 0.0kg and 300kg.");
+            userPresenter.prepareFailView("Enter a weight between 0.0kg and 300.0kg.");
         } else if ((0.0 <= height) && (height <= 250.0)) {
-            userPresenter.prepareFailView("Enter a height between 0.0cm and 250cm.");
+            userPresenter.prepareFailView("Enter a height between 0.0cm and 250.0cm.");
         } else if ((0 <= age) && (age <= 120)) {
             userPresenter.prepareFailView("Enter an age between 0 years and 120 years.");
         } else {
