@@ -7,16 +7,20 @@ import interface_adapter.Login.LoginViewModel;
 import interface_adapter.Signup.SignupViewModel;
 import interface_adapter.ViewManagerModel;
 
+import view.LoggedInView;
+import view.LoginView;
+import view.SignupView;
 import view.ViewManager;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 
 public class Main {
 
     public static void main(String[] args) {
-
         JFrame frame = new JFrame("Meal-Recipe-App");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(900,500);
@@ -51,20 +55,20 @@ public class Main {
             throw new RuntimeException(e);
         }
 
-//        SignupView signupView = SignupUseCaseFactory.create(viewManagerModel, loginViewModel, signupViewModel,
-//                userDataAccessObject);
-//        views.add(signupView, signupView.viewName);
-//
-//        LoginView loginView = LoginUseCaseFactory.create(viewManagerModel, loginViewModel, loggedInViewModel, userDataAccessObject);
-//        views.add(loginView, loginView.viewName);
-//
+        SignupView signupView = SignupUseCaseFactory.create(viewManagerModel, loginViewModel, signupViewModel,
+                userDataAccessObject);
+        views.add(signupView, signupView.viewName);
+
+        LoginView loginView = LoginUseCaseFactory.create(viewManagerModel, loginViewModel, loggedInViewModel, userDataAccessObject);
+        views.add(loginView, loginView.viewName);
+
 //        LoggedInView loggedInView = new LoggedInView(loggedInViewModel);
 //        views.add(loggedInView, loggedInView.viewName);
-//
-//        viewManagerModel.setActiveView(signupView.viewName);
-//        viewManagerModel.firePropertyChanged();
-//
-//        application.pack();
-//        application.setVisible(true);
+
+        viewManagerModel.setActiveView(signupView.viewName);
+        viewManagerModel.firePropertyChanged();
+
+        frame.pack();
+        frame.setVisible(true);
     }
 }

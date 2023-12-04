@@ -92,6 +92,9 @@ public class SignupState {
     public void setAge(int age) { this.age = age; }
     public void setDietaryRestrictions(ArrayList<String> dietaryRestrictions) {
         this.dietaryRestrictions = dietaryRestrictions; }
+    public void addRestriction(String restriction) {
+        this.dietaryRestrictions.add(restriction);
+    }
     public void setWeeklyBudget(float weeklyBudget) { this.weeklyBudget = weeklyBudget; }
     public void setRecommendedDailyCalories(int recommendedDailyCalories) {
         this.recommendedDailyCalories = recommendedDailyCalories; }

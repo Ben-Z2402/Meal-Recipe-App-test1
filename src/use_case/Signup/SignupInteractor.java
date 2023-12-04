@@ -36,7 +36,7 @@ public class SignupInteractor implements SignupInputBoundary {
         } else {
             // check that the passwords are equal.
             assert (password.equals(repeatPassword));
-            UserProfile user = userProfileFactory.create(username, password, weight, height, age, dietaryRestrictions,
+            UserProfile user = userProfileFactory.create(username, password, gender, weight, height, age, dietaryRestrictions,
                     weeklyBudget, recommendedDailyCalories);
             userDataAccessObject.save(user);
 

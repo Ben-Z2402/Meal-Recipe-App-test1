@@ -1,95 +1,95 @@
-package use_case.weekly_diet;
-
-import api.EdamamAPICall;
-import api.NutritionixAPICall;
-import com.alibaba.fastjson.JSONException;
-import entity.MealInfo;
-import entity.UserProfile;
-import entity.UserProfileFactory;
-import interface_adapter.DailyCalorieCalculatorController;
-import use_case.DailyCalorieCalculator.DailyCalorieCalculatorInteractor;
-
-import java.io.IOException;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Dictionary;
-import java.util.Hashtable;
-
-public class WeeklyDietInteractor implements WeeklyDietInputBoundary {
-
-    final WeeklyDietDataAccessInterface weeklyDietDataAccessObject;
-    final WeeklyDietOutputBoundary weeklyDietPresenter;
-    final UserProfileFactory userProfileFactory;
-
-    public WeeklyDietInteractor(WeeklyDietDataAccessInterface weeklyDietDataAccessInterface,
-                                WeeklyDietOutputBoundary weeklyDietOutputBoundary, UserProfileFactory userProfileFactory) {
-        this.weeklyDietDataAccessObject = weeklyDietDataAccessInterface;
-        this.weeklyDietPresenter = weeklyDietOutputBoundary;
-        this.userProfileFactory = userProfileFactory;
-    }
-
-    @Override
-    public void execute(WeeklyDietInputData weeklyDietInputData) {
-        LocalDateTime now = LocalDateTime.now();
-
-        String username = weeklyDietInputData.getUsername();
-        UserProfile userProfile = weeklyDietDataAccessObject.getUserProfile(username);
-
-        String gender = userProfile.getGender();
-        int age = userProfile.getAge();
-        float budget = userProfile.getWeeklyBudget();
-        float height = userProfile.getHeight();
-        float weight = userProfile.getWeight();
-        ArrayList<String> dietaryRestrictions = userProfile.getDietaryRestrictions();
-        float dailyCals = userProfile.getRecommendedDailyCalories();
-        double breakfastCals = 0.25 * dailyCals;
-        double lunchCals = 0.35 * dailyCals;
-        double dinnerCals = 0.4 * dailyCals;
-
-        ArrayList<MealInfo> weeklyDiet = new ArrayList<MealInfo>();
-        Dictionary<Integer, String> mealType = new Hashtable<>();
-        Dictionary<Integer, Double> mealTypeCals = new Hashtable<>();
-        mealTypeCals.put(1, breakfastCals);
-        mealTypeCals.put(2, lunchCals);
-        mealTypeCals.put(3, dinnerCals);
-        mealType.put(1, "Breakfast");
-        mealType.put(2, "Lunch");
-        mealType.put(3, "Dinner");
-        int mealTypeInt = 1;
-        do {
-            Dictionary<String, Object> query = new Hashtable<>();
-            query.put("mealType", mealType.get(mealTypeInt));
-            String calories = mealTypeCals.get(mealTypeInt) - 0.1 * mealTypeCals.get(mealTypeInt) + "-" +
-                    mealTypeCals.get(mealTypeInt) + 0.1 * mealTypeCals.get(mealTypeInt);
-            query.put("calories", calories);
-
-            for (int i = 0; i < dietaryRestrictions.size(); i++) {
-                query.put("health", dietaryRestrictions.get(i));
-            }
-
-            try {
-                EdamamAPICall.RecipeUrl(query);
-            } catch (JSONException e) {
-                throw new RuntimeException(e);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            MealInfo recipe = new MealInfo();
-
-            if (!weeklyDietDataAccessObject.recipeSaved(recipe, userProfile)) {
-                if (mealTypeInt < 3) {
-                    mealTypeInt++;
-                }
-                else {
-                    mealTypeInt = 1;
-                }
-                weeklyDiet.add(recipe);
-                weeklyDietDataAccessObject.saveRecipe(recipe, userProfile);
-            }
-
-        } while (weeklyDiet.size() < 21);
-
-        WeeklyDietOutputData weeklyDietOutputData = new WeeklyDietOutputData(weeklyDiet, now.toString(), false);
-        weeklyDietPresenter.prepareSuccessView(weeklyDietOutputData);
-    }
-}
+//package use_case.weekly_diet;
+//
+//import api.EdamamAPICall;
+//import api.NutritionixAPICall;
+//import com.alibaba.fastjson.JSONException;
+//import entity.MealInfo;
+//import entity.UserProfile;
+//import entity.UserProfileFactory;
+//import interface_adapter.DailyCalorieCalculatorController;
+//import use_case.DailyCalorieCalculator.DailyCalorieCalculatorInteractor;
+//
+//import java.io.IOException;
+//import java.time.LocalDateTime;
+//import java.util.ArrayList;
+//import java.util.Dictionary;
+//import java.util.Hashtable;
+//
+//public class WeeklyDietInteractor implements WeeklyDietInputBoundary {
+//
+//    final WeeklyDietDataAccessInterface weeklyDietDataAccessObject;
+//    final WeeklyDietOutputBoundary weeklyDietPresenter;
+//    final UserProfileFactory userProfileFactory;
+//
+//    public WeeklyDietInteractor(WeeklyDietDataAccessInterface weeklyDietDataAccessInterface,
+//                                WeeklyDietOutputBoundary weeklyDietOutputBoundary, UserProfileFactory userProfileFactory) {
+//        this.weeklyDietDataAccessObject = weeklyDietDataAccessInterface;
+//        this.weeklyDietPresenter = weeklyDietOutputBoundary;
+//        this.userProfileFactory = userProfileFactory;
+//    }
+//
+//    @Override
+//    public void execute(WeeklyDietInputData weeklyDietInputData) {
+//        LocalDateTime now = LocalDateTime.now();
+//
+//        String username = weeklyDietInputData.getUsername();
+//        UserProfile userProfile = weeklyDietDataAccessObject.getUserProfile(username);
+//
+//        String gender = userProfile.getGender();
+//        int age = userProfile.getAge();
+//        float budget = userProfile.getWeeklyBudget();
+//        float height = userProfile.getHeight();
+//        float weight = userProfile.getWeight();
+//        ArrayList<String> dietaryRestrictions = userProfile.getDietaryRestrictions();
+//        float dailyCals = userProfile.getRecommendedDailyCalories();
+//        double breakfastCals = 0.25 * dailyCals;
+//        double lunchCals = 0.35 * dailyCals;
+//        double dinnerCals = 0.4 * dailyCals;
+//
+//        ArrayList<MealInfo> weeklyDiet = new ArrayList<MealInfo>();
+//        Dictionary<Integer, String> mealType = new Hashtable<>();
+//        Dictionary<Integer, Double> mealTypeCals = new Hashtable<>();
+//        mealTypeCals.put(1, breakfastCals);
+//        mealTypeCals.put(2, lunchCals);
+//        mealTypeCals.put(3, dinnerCals);
+//        mealType.put(1, "Breakfast");
+//        mealType.put(2, "Lunch");
+//        mealType.put(3, "Dinner");
+//        int mealTypeInt = 1;
+//        do {
+//            Dictionary<String, Object> query = new Hashtable<>();
+//            query.put("mealType", mealType.get(mealTypeInt));
+//            String calories = mealTypeCals.get(mealTypeInt) - 0.1 * mealTypeCals.get(mealTypeInt) + "-" +
+//                    mealTypeCals.get(mealTypeInt) + 0.1 * mealTypeCals.get(mealTypeInt);
+//            query.put("calories", calories);
+//
+//            for (int i = 0; i < dietaryRestrictions.size(); i++) {
+//                query.put("health", dietaryRestrictions.get(i));
+//            }
+//
+//            try {
+//                EdamamAPICall.RecipeUrl(query);
+//            } catch (JSONException e) {
+//                throw new RuntimeException(e);
+//            } catch (IOException e) {
+//                throw new RuntimeException(e);
+//            }
+//            MealInfo recipe = new MealInfo();
+//
+//            if (!weeklyDietDataAccessObject.recipeSaved(recipe, userProfile)) {
+//                if (mealTypeInt < 3) {
+//                    mealTypeInt++;
+//                }
+//                else {
+//                    mealTypeInt = 1;
+//                }
+//                weeklyDiet.add(recipe);
+//                weeklyDietDataAccessObject.saveRecipe(recipe, userProfile);
+//            }
+//
+//        } while (weeklyDiet.size() < 21);
+//
+//        WeeklyDietOutputData weeklyDietOutputData = new WeeklyDietOutputData(weeklyDiet, now.toString(), false);
+//        weeklyDietPresenter.prepareSuccessView(weeklyDietOutputData);
+//    }
+//}

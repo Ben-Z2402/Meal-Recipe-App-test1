@@ -4,12 +4,13 @@ import entity.UserProfile;
 import entity.UserProfileFactory;
 import use_case.Exercise.ExerciseDataAccessInterface;
 import use_case.Login.LoginUserDataAccessInterface;
+import use_case.Signup.SignupUserDataAccessInterface;
 
 import java.io.File;
 import java.io.*;
 import java.util.*;
 
-public class DataAccessObject implements ExerciseDataAccessInterface, LoginUserDataAccessInterface {
+public class DataAccessObject implements ExerciseDataAccessInterface, LoginUserDataAccessInterface, SignupUserDataAccessInterface {
     private final File csvFile;
 
     private final Map<String, Integer> headers = new LinkedHashMap<>();

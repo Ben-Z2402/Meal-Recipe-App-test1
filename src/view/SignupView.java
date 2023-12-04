@@ -59,7 +59,19 @@ public class SignupView extends JPanel implements ActionListener, PropertyChange
         buttons.add(signUp);
         cancel = new JButton(signupViewModel.CANCEL_BUTTON_LABEL);
         buttons.add(cancel);
+
+        String[] restrictionOptions = {"Lactose Intolerant", "Glucose"};
+        JComboBox<String> dropDownMenu = new JComboBox<>(restrictionOptions);
         dietaryRestrictions = new JButton(signupViewModel.DIETARY_RESTRICTIONS_LABEL);
+
+        dietaryRestrictions.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String selectedRestriction = (String) dropDownMenu.getSelectedItem();
+                SignupState currentState = signupViewModel.getState();
+                currentState.addRestriction(selectedRestriction);
+            }
+        });
         buttons.add(dietaryRestrictions);
 
         signUp.addActionListener(
@@ -143,7 +155,7 @@ public class SignupView extends JPanel implements ActionListener, PropertyChange
                     @Override
                     public void keyTyped(KeyEvent e) {
                         SignupState currentState = signupViewModel.getState();
-                        currentState.setWeight(Integer.valueOf(weightInputField.getText()) + e.getKeyChar());
+                        currentState.setWeight(Float.valueOf(weightInputField.getText() + e.getKeyChar()));
                         signupViewModel.setState(currentState);
                     }
 
@@ -163,7 +175,7 @@ public class SignupView extends JPanel implements ActionListener, PropertyChange
                     @Override
                     public void keyTyped(KeyEvent e) {
                         SignupState currentState = signupViewModel.getState();
-                        currentState.setWeight(Integer.valueOf(heightInputField.getText()) + e.getKeyChar());
+                        currentState.setWeight(Float.valueOf(heightInputField.getText() + e.getKeyChar()));
                         signupViewModel.setState(currentState);
                     }
 
@@ -183,7 +195,7 @@ public class SignupView extends JPanel implements ActionListener, PropertyChange
                     @Override
                     public void keyTyped(KeyEvent e) {
                         SignupState currentState = signupViewModel.getState();
-                        currentState.setWeight(Integer.valueOf(ageInputField.getText()) + e.getKeyChar());
+                        currentState.setWeight(Integer.valueOf(ageInputField.getText() + e.getKeyChar()));
                         signupViewModel.setState(currentState);
                     }
 
@@ -203,7 +215,7 @@ public class SignupView extends JPanel implements ActionListener, PropertyChange
                     @Override
                     public void keyTyped(KeyEvent e) {
                         SignupState currentState = signupViewModel.getState();
-                        currentState.setWeight(Integer.valueOf(weeklyBudgetInputField.getText()) + e.getKeyChar());
+                        currentState.setWeight(Float.valueOf(weeklyBudgetInputField.getText() + e.getKeyChar()));
                         signupViewModel.setState(currentState);
                     }
 
@@ -225,6 +237,10 @@ public class SignupView extends JPanel implements ActionListener, PropertyChange
         this.add(usernameInfo);
         this.add(passwordInfo);
         this.add(repeatPasswordInfo);
+        this.add(weightInfo);
+        this.add(heightInfo);
+        this.add(ageInfo);
+        this.add(weeklyBudgetInfo);
         this.add(buttons);
     }
 
