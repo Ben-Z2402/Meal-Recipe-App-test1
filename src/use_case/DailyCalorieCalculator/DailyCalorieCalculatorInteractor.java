@@ -15,6 +15,8 @@ public class DailyCalorieCalculatorInteractor implements DailyCalorieCalculatorB
         String gender = dailyCalorieCalculatorInputData.getGender();
         double recCalories;
 
+        // weight in kg, height in cm, age in years
+
         if (gender.equals("male")) {
             recCalories = (66 + (13.7 * weight) + (5 * height) - (6.8 * age));
         }
