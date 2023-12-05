@@ -58,7 +58,7 @@ public class DataAccessObject implements ExerciseDataAccessInterface, LoginUserD
                     ArrayList<String> dietaryRestrictions = new ArrayList<>(Arrays.asList(elements));
                     ////////////////////////////
                     float weeklyBudget = Float.parseFloat(col[headers.get("weeklyBudget")]);
-                    float recommendedDailyCalories = Integer.parseInt(col[headers.get("recommendedDailyCalories")]);
+                    float recommendedDailyCalories = Float.parseFloat(col[headers.get("recommendedDailyCalories")]);
                     UserProfile user = userProfileFactory.create(username, password, gender, weight, height, age,
                             dietaryRestrictions, weeklyBudget, recommendedDailyCalories);
                     accounts.put(username, user);
