@@ -95,8 +95,8 @@ public class DataAccessObject implements ExerciseDataAccessInterface, LoginUserD
 
             for (UserProfile user : accounts.values()) {
                 String stringDietaryRestriction = "";
-                String line = String.format("%s,%s,%s,%s,%s,%s,%s,%s",
-                        user.getUsername(), user.getPassword(), String.valueOf(user.getWeight()),
+                String line = String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s",
+                        user.getUsername(), user.getPassword(), user.getGender(), String.valueOf(user.getWeight()),
                         String.valueOf(user.getHeight()), String.valueOf(user.getAge()),
                         user.getDietaryRestrictions().toString(), String.valueOf(user.getWeeklyBudget()),
                         String.valueOf(user.getRecommendedDailyCalories()));

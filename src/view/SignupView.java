@@ -12,6 +12,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.util.ArrayList;
 
 public class SignupView extends JPanel implements ActionListener, PropertyChangeListener {
     public final String viewName = "sign up";
@@ -24,7 +25,7 @@ public class SignupView extends JPanel implements ActionListener, PropertyChange
     private final JTextField weightInputField = new JTextField(15);
     private final JTextField heightInputField = new JTextField(15);
     private final JTextField ageInputField = new JTextField(15);
-    private final JButton dietaryRestrictions;
+    private final JButton dietaryRestrictionButton;
     private final JTextField weeklyBudgetInputField = new JTextField(15);
 
     private final SignupController signupController;
@@ -64,20 +65,57 @@ public class SignupView extends JPanel implements ActionListener, PropertyChange
         cancel = new JButton(signupViewModel.CANCEL_BUTTON_LABEL);
         buttons.add(cancel);
 
-        String[] restrictionOptions = {"Lactose Intolerant", "Glucose"};
-        JComboBox<String> dropDownMenu = new JComboBox<>(restrictionOptions);
-        dietaryRestrictions = new JButton(signupViewModel.DIETARY_RESTRICTIONS_LABEL);
+        dietaryRestrictionButton = new JButton(signupViewModel.DIETARY_RESTRICTIONS_LABEL);
 
-        dietaryRestrictions.addActionListener(new ActionListener() {
+        JPopupMenu popUpMenu = new JPopupMenu();
+
+        JCheckBox lactoseIntolerant = new JCheckBox("Lactose Intolerant");
+        JCheckBox highBP = new JCheckBox("High Blood Pressure");
+
+        popUpMenu.add(lactoseIntolerant);
+        popUpMenu.add(highBP);
+
+        dietaryRestrictionButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String selectedRestriction = (String) dropDownMenu.getSelectedItem();
-                SignupState currentState = signupViewModel.getState();
-                currentState.addRestriction(selectedRestriction);
+                popUpMenu.show(dietaryRestrictionButton, 0, dietaryRestrictionButton.getHeight());
             }
         });
-        buttons.add(dietaryRestrictions);
 
+        lactoseIntolerant.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (lactoseIntolerant.isSelected()) {
+                    SignupState currentState = signupViewModel.getState();
+                    currentState.addRestriction(lactoseIntolerant.getText());
+                }
+                else {
+                    SignupState currentState = signupViewModel.getState();
+                    currentState.removeRestriction(lactoseIntolerant.getText());
+                }
+            }
+        });
+
+        highBP.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (highBP.isSelected()) {
+                    SignupState currentState = signupViewModel.getState();
+                    currentState.addRestriction(highBP.getText());
+                }
+                else {
+                    SignupState currentState = signupViewModel.getState();
+                    currentState.removeRestriction(highBP.getText());
+                }
+            }
+        });
+
+
+        buttons.add(dietaryRestrictionButton);
+
+//        String selectedRestriction = (String) dropDownMenu.getSelectedItem();
+//        SignupState currentState = signupViewModel.getState();
+//        currentState.addRestriction(selectedRestriction);
         signUp.addActionListener(
                 // This creates an anonymous subclass of ActionListener and instantiates it.
                 new ActionListener() {
@@ -260,11 +298,13 @@ public class SignupView extends JPanel implements ActionListener, PropertyChange
         this.add(usernameInfo);
         this.add(passwordInfo);
         this.add(repeatPasswordInfo);
+        this.add(genderInfo);
         this.add(weightInfo);
         this.add(heightInfo);
         this.add(ageInfo);
         this.add(weeklyBudgetInfo);
         this.add(buttons);
+
     }
 
     /**
@@ -280,6 +320,51 @@ public class SignupView extends JPanel implements ActionListener, PropertyChange
         if (state.getUsernameError() != null) {
             JOptionPane.showMessageDialog(this, state.getUsernameError());
         }
+    }
+
+    private static void createDropDownMenu(JPanel panel, SignupState currentState) {
+        JButton dropdownButton = new JButton("▼");
+
+        JPopupMenu popUpMenu = new JPopupMenu();
+
+        JCheckBox lactoseIntolerant = new JCheckBox("Lactose Intolerant");
+        JCheckBox highBP = new JCheckBox("High Blood Pressure");
+
+        popUpMenu.add(lactoseIntolerant);
+        popUpMenu.add(highBP);
+
+        dropdownButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                popUpMenu.show(dropdownButton, 0, dropdownButton.getHeight());
+            }
+        });
+
+        lactoseIntolerant.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (lactoseIntolerant.isSelected()) {
+                    currentState.addRestriction(lactoseIntolerant.getText());
+                }
+                else {
+                    currentState.removeRestriction(lactoseIntolerant.getText());
+                }
+            }
+        });
+
+        highBP.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (highBP.isSelected()) {
+                    currentState.addRestriction(highBP.getText());
+                }
+                else {
+                    currentState.removeRestriction(highBP.getText());
+                }
+            }
+        });
+
+
     }
 
 

@@ -21,24 +21,22 @@ import java.io.IOException;
 public class Main {
 
     public static void main(String[] args) {
-        JFrame frame = new JFrame("Meal-Recipe-App");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(900,500);
-        frame.setLocationRelativeTo(null);
+        // Build the main program window, the main panel containing the
+        // various cards, and the layout, and stitch them together.
+
+        // The main application window.
+        JFrame application = new JFrame("Login Example");
+        application.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         CardLayout cardLayout = new CardLayout();
-        JPanel currentView = new JPanel(cardLayout);
 
-
-
-        frame.setVisible(true);
-
+        // The various View objects. Only one view is visible at a time.
         JPanel views = new JPanel(cardLayout);
-        frame.add(currentView);
+        application.add(views);
 
-        // The ViewManager model controls which of the view are currently being displayed.
+        // This keeps track of and manages which view is currently showing.
         ViewManagerModel viewManagerModel = new ViewManagerModel();
-        new ViewManager(currentView, cardLayout, viewManagerModel);
+        new ViewManager(views, cardLayout, viewManagerModel);
 
         // The data for the views, such as username and password, are in the ViewModels.
         // This information will be changed by a presenter object that is reporting the
@@ -59,8 +57,9 @@ public class Main {
                 userDataAccessObject);
         views.add(signupView, signupView.viewName);
 
-        LoginView loginView = LoginUseCaseFactory.create(viewManagerModel, loginViewModel, loggedInViewModel, userDataAccessObject);
-        views.add(loginView, loginView.viewName);
+//        LoginView loginView = LoginUseCaseFactory.create(viewManagerModel, loginViewModel, loggedInViewModel,
+//        userDataAccessObject);
+//        views.add(loginView, loginView.viewName);
 
 //        LoggedInView loggedInView = new LoggedInView(loggedInViewModel);
 //        views.add(loggedInView, loggedInView.viewName);
@@ -68,7 +67,7 @@ public class Main {
         viewManagerModel.setActiveView(signupView.viewName);
         viewManagerModel.firePropertyChanged();
 
-        frame.pack();
-        frame.setVisible(true);
+        application.pack();
+        application.setVisible(true);
     }
 }
