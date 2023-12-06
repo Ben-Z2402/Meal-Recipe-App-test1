@@ -10,8 +10,8 @@ public class DailyCalorieCalculatorController {
         this.userDailyCalorieCalculatorInteractor = userDailyCalorieCalculatorInteractor;
     }
 
-    public void execute(String gender, int age, float height, float weight_lbs) {
-        DailyCalorieCalculatorInputData dailyCalorieCalculatorInputData = new DailyCalorieCalculatorInputData(gender, age, height, weight_lbs);
+    public void execute(String username) {
+        DailyCalorieCalculatorInputData dailyCalorieCalculatorInputData = new DailyCalorieCalculatorInputData(username);
         userDailyCalorieCalculatorInteractor.execute(dailyCalorieCalculatorInputData);
     }
 }
