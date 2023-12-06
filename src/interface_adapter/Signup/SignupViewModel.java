@@ -17,7 +17,6 @@ public class SignupViewModel extends ViewModel {
     public static final String DIETARY_RESTRICTIONS_LABEL = "Select your dietary restrictions";
     public static final String WEEKLY_BUDGET_LABEL = "Enter your weekly budget";
     public static final String SIGNUP_BUTTON_LABEL = "Sign up";
-    public static final String CANCEL_BUTTON_LABEL = "Cancel";
 
     private SignupState state = new SignupState();
 
