@@ -2,6 +2,7 @@ package data_access;
 
 import entity.UserProfile;
 import entity.UserProfileFactory;
+import use_case.DailyCalorieCalculator.DailyCalorieCalculatorDataAccessInterface;
 import use_case.Exercise.ExerciseDataAccessInterface;
 import use_case.Login.LoginUserDataAccessInterface;
 import use_case.Signup.SignupUserDataAccessInterface;
@@ -10,7 +11,8 @@ import java.io.File;
 import java.io.*;
 import java.util.*;
 
-public class DataAccessObject implements ExerciseDataAccessInterface, LoginUserDataAccessInterface, SignupUserDataAccessInterface {
+public class DataAccessObject implements ExerciseDataAccessInterface, LoginUserDataAccessInterface, SignupUserDataAccessInterface,
+        DailyCalorieCalculatorDataAccessInterface {
     private final File csvFile;
 
     private final Map<String, Integer> headers = new LinkedHashMap<>();
@@ -64,6 +66,24 @@ public class DataAccessObject implements ExerciseDataAccessInterface, LoginUserD
                     accounts.put(username, user);
                 }
             }
+        }
+    }
+    public void updateCalories(UserProfile user, double calories) {
+        if (csvFile.length() == 0) {
+            this.save();
+        } else {
+            try (BufferedReader reader = new BufferedReader(new FileReader(csvFile))) {
+                String row;
+                while ((row = reader.readLine()) != null) {
+                    String[] col = row.split(",");
+                    String username = String.valueOf(col[headers.get("username")]);
+                    if (username.equals(user.getUsername())) {
+                        col[headers.get("recommendedDailyCalories")] = String.valueOf(calories);
+                    }
+                }
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            } ;
         }
     }
     @Override

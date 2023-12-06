@@ -4,5 +4,5 @@ import entity.UserProfile;
 
 public interface DailyCalorieCalculatorDataAccessInterface {
     UserProfile getUserProfile(String user);
-    void updateCalories(UserProfile userProfile, double recCalories);
+    void updateCalories(UserProfile user, double recCalories);
 }
