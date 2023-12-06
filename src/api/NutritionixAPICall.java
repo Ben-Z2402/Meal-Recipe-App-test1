@@ -9,19 +9,8 @@ public class NutritionixAPICall {
     public static void main(String[] args) throws IOException {
         NutritionixAPICall apicall = new NutritionixAPICall();
         String exercisePerformed = "swam 2 hour";
-        String gender = "male";
-        int weight = 75;
-        int height = 180;
-        int age = 30;
         // gender, age and height does not appear to affect calculations
-        String query =
-                "{\n" +
-                        "\"query\" : \"" + exercisePerformed + "\",\n" +
-                        "\"gender\" : \"" + gender + "\",\n" +
-                        "\"weight_kg\" : \"" + weight + "\",\n" +
-                        "\"height_cm\" : \"" + height + "\",\n" +
-                        "\"age\" : \"" + age + "\"\n" +
-                        "}";
+        String query = "{\n  \"query\": \"" + exercisePerformed + "\"\n}";
         System.out.println(query);
         System.out.println(apicall.caloriesBurned(query));
     }
