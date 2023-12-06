@@ -7,9 +7,9 @@ import java.beans.PropertyChangeSupport;
 
 public class SignupViewModel extends ViewModel {
     public static final String TITLE_LABEL = "Sign Up View";
-    public static final String USERNAME_LABEL = "Enter username";
-    public static final String PASSWORD_LABEL = "Enter password";
-    public static final String REPEAT_PASSWORD_LABEL = "Enter password again";
+    public static final String USERNAME_LABEL = "Create a username:";
+    public static final String PASSWORD_LABEL = "Create a password:";
+    public static final String REPEAT_PASSWORD_LABEL = "Re-enter password:";
     public static final String GENDER_LABEL = "Enter your gender (male or female)";
     public static final String WEIGHT_LABEL = "Enter weight (kg)";
     public static final String HEIGHT_LABEL = "Enter height (cm)";
