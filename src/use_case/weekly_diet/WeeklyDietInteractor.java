@@ -7,8 +7,6 @@ import com.alibaba.fastjson.JSONObject;
 import entity.MealInfo;
 import entity.UserProfile;
 import entity.UserProfileFactory;
-import interface_adapter.DailyCalorieCalculatorController;
-import use_case.DailyCalorieCalculator.DailyCalorieCalculatorInteractor;
 
 import java.io.IOException;
 import java.lang.reflect.Array;

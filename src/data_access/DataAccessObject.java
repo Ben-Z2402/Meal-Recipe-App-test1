@@ -34,6 +34,7 @@ public class DataAccessObject implements ExerciseDataAccessInterface, LoginUserD
         this.headers.put("dietaryRestrictions", 6);
         this.headers.put("weeklyBudget", 7);
         this.headers.put("recommendedDailyCalories", 8);
+        this.headers.put("recipes", 9);
 
         if (csvFile.length() == 0) {
             save();
@@ -44,7 +45,7 @@ public class DataAccessObject implements ExerciseDataAccessInterface, LoginUserD
 
                 // For later: clean this up by creating a new Exception subclass and handling it in the UI.
                 assert header.equals("username,password,gender,weight,height,age,dietaryRestrictions,weeklyBudget," +
-                        "recommendedDailyCalories");
+                        "recommendedDailyCalories,recipes");
 
                 String row;
                 while ((row = reader.readLine()) != null) {
@@ -113,11 +114,51 @@ public class DataAccessObject implements ExerciseDataAccessInterface, LoginUserD
 
     @Override
     public void saveRecipe(MealInfo recipe, UserProfile userProfile) {
-
+        if (csvFile.length() == 0) {
+            this.save();
+        } else {
+            try (BufferedReader reader = new BufferedReader(new FileReader(csvFile))) {
+                String header = reader.readLine();
+                String row;
+                while ((row = reader.readLine()) != null) {
+                    String[] col = row.split(",");
+                    String username = String.valueOf(col[headers.get("username")]);
+                    if (username.equals(userProfile.getUsername())) {
+                        col[headers.get("recipes")] += recipe + ",";
+                    }
+                }
+                this.save();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            } ;
+        }
     }
 
     @Override
     public boolean recipeSaved(MealInfo recipe, UserProfile userProfile) {
+        if (csvFile.length() == 0) {
+            this.save();
+        } else {
+            try (BufferedReader reader = new BufferedReader(new FileReader(csvFile))) {
+                String header = reader.readLine();
+                String row;
+                while ((row = reader.readLine()) != null) {
+                    String[] col = row.split(",");
+                    String username = String.valueOf(col[headers.get("username")]);
+                    if (username.equals(userProfile.getUsername())) {
+                        String[] recipes = col[headers.get("recipes")].split(",");
+                        for (String r : recipes) {
+                            if (r.contentEquals(recipe.toString())) {
+                                return true;
+                            }
+                        }
+                    }
+                }
+                this.save();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            } ;
+        }
         return false;
     }
 
