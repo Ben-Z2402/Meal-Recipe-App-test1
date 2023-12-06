@@ -1,18 +1,25 @@
 package use_case.DailyCalorieCalculator;
 
-public class DailyCalorieCalculatorInteractor implements DailyCalorieCalculatorBoundary {
+import entity.UserProfile;
+import entity.UserProfileFactory;
 
+public class DailyCalorieCalculatorInteractor implements DailyCalorieCalculatorBoundary {
     final DailyCalorieCalculatorOutputBoundary dailyCalorieCalculatorPresenter;
 
-    public DailyCalorieCalculatorInteractor(DailyCalorieCalculatorOutputBoundary dailyCalorieCalculatorPresenter) {
+    final DailyCalorieCalculatorDataAccessInterface dailyCalorieCalculatorDataAccessInterface;
+
+    public DailyCalorieCalculatorInteractor(DailyCalorieCalculatorOutputBoundary dailyCalorieCalculatorPresenter, DailyCalorieCalculatorDataAccessInterface dailyCalorieCalculatorDataAccessInterface) {
             this.dailyCalorieCalculatorPresenter = dailyCalorieCalculatorPresenter;
+            this.dailyCalorieCalculatorDataAccessInterface = dailyCalorieCalculatorDataAccessInterface;
         }
     @Override
     public void execute(DailyCalorieCalculatorInputData dailyCalorieCalculatorInputData) {
-        float weight = dailyCalorieCalculatorInputData.getWeight_lbs();
-        float height = dailyCalorieCalculatorInputData.getHeight();
-        int age = dailyCalorieCalculatorInputData.getAge();
-        String gender = dailyCalorieCalculatorInputData.getGender();
+        String username = dailyCalorieCalculatorInputData.getUsername();
+        UserProfile userProfile = dailyCalorieCalculatorDataAccessInterface.getUserProfile(username);
+        float weight = userProfile.getWeight();
+        float height = userProfile.getHeight();
+        int age = userProfile.getAge();
+        String gender = userProfile.getGender();
         double recCalories;
 
         // weight in kg, height in cm, age in years
@@ -24,6 +31,7 @@ public class DailyCalorieCalculatorInteractor implements DailyCalorieCalculatorB
             recCalories = (655 + (9.6 * weight) + (1.8 * height) - (4.7 * age));
         }
         DailyCalorieCalculatorOutputData dailyCalorieCalculatorOutputData = new DailyCalorieCalculatorOutputData(recCalories);
+        dailyCalorieCalculatorDataAccessInterface.updateCalories(userProfile, recCalories);
         dailyCalorieCalculatorPresenter.prepareSuccessView(dailyCalorieCalculatorOutputData);
     }
 }
