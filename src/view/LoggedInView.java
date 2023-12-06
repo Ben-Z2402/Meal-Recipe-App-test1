@@ -51,7 +51,6 @@ public class LoggedInView extends JPanel implements ActionListener, PropertyChan
                     public void actionPerformed(ActionEvent evt) {
                         if (evt.getSource().equals(getRecipes)) {
                             LoggedInState currentState = loggedInViewModel.getState();
-
                             weeklyDietController.execute(currentState.getUsername());
 
                             recipes = new JDialog();

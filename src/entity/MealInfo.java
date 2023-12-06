@@ -13,10 +13,10 @@ public class MealInfo implements Meal {
     private float vitamins;
     private float sodium;
     private float cholesterol;
-    private ArrayList<String> ingredients;
+    private String[] ingredients;
 
-    MealInfo(String name, String description, int calories, float price, float carbohydrates, float fat, float protein,
-             float vitamins, float sodium, float cholesterol, ArrayList<String> ingredients) {
+    public MealInfo(String name, String description, int calories, float price, float carbohydrates, float fat, float protein,
+             float vitamins, float sodium, float cholesterol, String[] ingredients) {
         this.name = name;
         this.description = description;
         this.calories = calories;
@@ -41,7 +41,7 @@ public class MealInfo implements Meal {
     }
 
     @Override
-    public ArrayList<String> getIngredients() {
+    public String[] getIngredients() {
         return ingredients;
     }
 
