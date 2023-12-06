@@ -10,6 +10,7 @@ import interface_adapter.ViewManagerModel;
 //import view.LoggedInView;
 import view.LoginView;
 import view.SignupView;
+//import view.LoggedInView;
 import view.ViewManager;
 
 import javax.swing.*;
@@ -57,9 +58,9 @@ public class Main {
                 userDataAccessObject);
         views.add(signupView, signupView.viewName);
 
-//        LoginView loginView = LoginUseCaseFactory.create(viewManagerModel, loginViewModel, loggedInViewModel,
-//        userDataAccessObject);
-//        views.add(loginView, loginView.viewName);
+        LoginView loginView = LoginUseCaseFactory.create(viewManagerModel, loginViewModel, loggedInViewModel,
+        userDataAccessObject);
+        views.add(loginView, loginView.viewName);
 
 //        LoggedInView loggedInView = new LoggedInView(loggedInViewModel);
 //        views.add(loggedInView, loggedInView.viewName);
