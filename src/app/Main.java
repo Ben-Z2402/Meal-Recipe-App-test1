@@ -2,12 +2,17 @@ package app;
 
 import data_access.DataAccessObject;
 import entity.CommonUserProfileFactory;
+import entity.UserProfileFactory;
 import interface_adapter.Logged_in.LoggedInViewModel;
 import interface_adapter.Login.LoginViewModel;
+import interface_adapter.Logout.LogoutController;
+import interface_adapter.Logout.LogoutViewModel;
 import interface_adapter.Signup.SignupViewModel;
 import interface_adapter.ViewManagerModel;
 
 //import view.LoggedInView;
+import interface_adapter.WeeklyDietController;
+import view.LoggedInView;
 import view.LoginView;
 import view.SignupView;
 //import view.LoggedInView;
@@ -15,13 +20,11 @@ import view.ViewManager;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.IOException;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         // Build the main program window, the main panel containing the
         // various cards, and the layout, and stitch them together.
 
@@ -46,6 +49,7 @@ public class Main {
         LoginViewModel loginViewModel = new LoginViewModel();
         LoggedInViewModel loggedInViewModel = new LoggedInViewModel();
         SignupViewModel signupViewModel = new SignupViewModel();
+        LogoutViewModel logoutViewModel = new LogoutViewModel();
 
         DataAccessObject userDataAccessObject;
         try {
@@ -62,8 +66,16 @@ public class Main {
         userDataAccessObject);
         views.add(loginView, loginView.viewName);
 
-//        LoggedInView loggedInView = new LoggedInView(loggedInViewModel);
-//        views.add(loggedInView, loggedInView.viewName);
+        UserProfileFactory userProfileFactory = new CommonUserProfileFactory();
+
+        WeeklyDietController weeklyDietController = WeeklyDietControllerFactory.createWeeklyDietController(
+                loggedInViewModel, viewManagerModel, userDataAccessObject, userProfileFactory);
+
+        LogoutController logoutController = LogoutControllerFactory.createLogoutController(viewManagerModel,
+                logoutViewModel);
+
+        LoggedInView loggedInView = new LoggedInView(weeklyDietController, loggedInViewModel, logoutController);
+        views.add(loggedInView, loggedInView.viewName);
 
         viewManagerModel.setActiveView(signupView.viewName);
         viewManagerModel.firePropertyChanged();

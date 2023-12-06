@@ -1,18 +1,20 @@
 package data_access;
 
+import entity.MealInfo;
 import entity.UserProfile;
 import entity.UserProfileFactory;
 import use_case.DailyCalorieCalculator.DailyCalorieCalculatorDataAccessInterface;
 import use_case.Exercise.ExerciseDataAccessInterface;
 import use_case.Login.LoginUserDataAccessInterface;
 import use_case.Signup.SignupUserDataAccessInterface;
+import use_case.weekly_diet.WeeklyDietDataAccessInterface;
 
 import java.io.File;
 import java.io.*;
 import java.util.*;
 
 public class DataAccessObject implements ExerciseDataAccessInterface, LoginUserDataAccessInterface, SignupUserDataAccessInterface,
-        DailyCalorieCalculatorDataAccessInterface {
+        DailyCalorieCalculatorDataAccessInterface, WeeklyDietDataAccessInterface {
     private final File csvFile;
 
     private final Map<String, Integer> headers = new LinkedHashMap<>();
@@ -106,6 +108,17 @@ public class DataAccessObject implements ExerciseDataAccessInterface, LoginUserD
     public UserProfile getUserProfile(String username) {
         return accounts.get(username);
     }
+
+    @Override
+    public void saveRecipe(MealInfo recipe, UserProfile userProfile) {
+
+    }
+
+    @Override
+    public boolean recipeSaved(MealInfo recipe, UserProfile userProfile) {
+        return false;
+    }
+
     private void save() {
         BufferedWriter writer;
         try {

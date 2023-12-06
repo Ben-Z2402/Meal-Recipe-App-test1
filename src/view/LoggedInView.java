@@ -2,6 +2,7 @@ package view;
 
 import entity.MealInfo;
 import interface_adapter.Login.LoginState;
+import interface_adapter.Logout.LogoutController;
 import interface_adapter.WeeklyDietController;
 import interface_adapter.Logged_in.LoggedInState;
 import interface_adapter.Logged_in.LoggedInViewModel;
@@ -21,16 +22,19 @@ public class LoggedInView extends JPanel implements ActionListener, PropertyChan
 
     private final LoggedInViewModel loggedInViewModel;
     private final WeeklyDietController weeklyDietController;
+    private final LogoutController logoutController;
 
     private final JButton getRecipes;
     private final JButton logOut;
     private JDialog recipes;
 
-    public LoggedInView(WeeklyDietController controller, LoggedInViewModel loggedInViewModel) {
+    public LoggedInView(WeeklyDietController controller, LoggedInViewModel loggedInViewModel,
+                        LogoutController logoutController) {
 
         this.weeklyDietController = controller;
         this.loggedInViewModel = loggedInViewModel;
         loggedInViewModel.addPropertyChangeListener(this);
+        this.logoutController = logoutController;
 
         JLabel title = new JLabel(loggedInViewModel.TITLE_LABEL);
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -61,18 +65,16 @@ public class LoggedInView extends JPanel implements ActionListener, PropertyChan
                     }
                 }
         );
-//        logOut.addActionListener(
-//                // This creates an anonymous subclass of ActionListener and instantiates it.
-//                new ActionListener() {
-//                    public void actionPerformed(ActionEvent evt) {
-//                        if (evt.getSource().equals(logOut)) {
-//                            LoggedInState currentState = loggedInViewModel.getState();
-//
-//                            ...
-//                        }
-//                    }
-//                }
-//        );
+        logOut.addActionListener(
+                // This creates an anonymous subclass of ActionListener and instantiates it.
+                new ActionListener() {
+                    public void actionPerformed(ActionEvent evt) {
+                        if (evt.getSource().equals(logOut)) {
+                            logoutController.execute();
+                        }
+                    }
+                }
+        );
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
