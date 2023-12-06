@@ -1,17 +1,11 @@
 package use_case.weekly_diet;
 
 import api.EdamamAPICall;
-import api.NutritionixAPICall;
 import com.alibaba.fastjson.JSONException;
-import com.alibaba.fastjson.JSONObject;
 import entity.MealInfo;
 import entity.UserProfile;
 import entity.UserProfileFactory;
-import interface_adapter.DailyCalorieCalculatorController;
-import use_case.DailyCalorieCalculator.DailyCalorieCalculatorInteractor;
-
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Dictionary;

@@ -50,4 +50,6 @@ public class UserProfile {
     public float getRecommendedDailyCalories() {
         return this.recommendedDailyCalories;
     }
+    public void setRecommendedDailyCalories(float recommendedDailyCalories) {
+        this.recommendedDailyCalories = recommendedDailyCalories; }
 }

@@ -3,7 +3,6 @@ package data_access;
 import entity.MealInfo;
 import entity.UserProfile;
 import entity.UserProfileFactory;
-import use_case.DailyCalorieCalculator.DailyCalorieCalculatorDataAccessInterface;
 import use_case.Exercise.ExerciseDataAccessInterface;
 import use_case.Login.LoginUserDataAccessInterface;
 import use_case.Signup.SignupUserDataAccessInterface;
@@ -13,8 +12,7 @@ import java.io.File;
 import java.io.*;
 import java.util.*;
 
-public class DataAccessObject implements ExerciseDataAccessInterface, LoginUserDataAccessInterface, SignupUserDataAccessInterface,
-        DailyCalorieCalculatorDataAccessInterface, WeeklyDietDataAccessInterface {
+public class DataAccessObject implements ExerciseDataAccessInterface, LoginUserDataAccessInterface, SignupUserDataAccessInterface, WeeklyDietDataAccessInterface {
     private final File csvFile;
 
     private final Map<String, Integer> headers = new LinkedHashMap<>();
@@ -70,24 +68,16 @@ public class DataAccessObject implements ExerciseDataAccessInterface, LoginUserD
             }
         }
     }
-    public void updateCalories(UserProfile user, double calories) {
-        if (csvFile.length() == 0) {
-            this.save();
-        } else {
-            try (BufferedReader reader = new BufferedReader(new FileReader(csvFile))) {
-                String header = reader.readLine();
-                String row;
-                while ((row = reader.readLine()) != null) {
-                    String[] col = row.split(",");
-                    String username = String.valueOf(col[headers.get("username")]);
-                    if (username.equals(user.getUsername())) {
-                        col[headers.get("recommendedDailyCalories")] = String.valueOf(calories);
-                    }
-                }
-                this.save();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            } ;
+    private float calculateDailyCalories(UserProfile user) {
+        String gender = user.getGender();
+        float weight = user.getWeight();
+        float height = user.getHeight();
+        int age = user.getAge();
+        if (gender.equals("Male")) {
+            return Float.parseFloat(String.valueOf(66 + (13.7 * weight) + (5 * height) - (6.8 * age)));
+        }
+        else {
+            return Float.parseFloat(String.valueOf(655 + (9.6 * weight) + (1.8 * height) - (4.7 * age)));
         }
     }
     @Override
@@ -102,6 +92,8 @@ public class DataAccessObject implements ExerciseDataAccessInterface, LoginUserD
 
     @Override
     public void save(UserProfile user) {
+        float recCalories = calculateDailyCalories(user);
+        user.setRecommendedDailyCalories(recCalories);
         accounts.put(user.getUsername(), user);
         this.save();
     }
