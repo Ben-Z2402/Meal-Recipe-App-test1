@@ -3,6 +3,7 @@ package use_case.weekly_diet;
 import api.EdamamAPICall;
 import api.NutritionixAPICall;
 import com.alibaba.fastjson.JSONException;
+import com.alibaba.fastjson.JSONObject;
 import entity.MealInfo;
 import entity.UserProfile;
 import entity.UserProfileFactory;
@@ -68,7 +69,7 @@ public class WeeklyDietInteractor implements WeeklyDietInputBoundary {
             }
 
             try {
-                EdamamAPICall.RecipeUrl(query);
+                JSONObject result = EdamamAPICall.RecipeUrl(query);
             } catch (JSONException e) {
                 throw new RuntimeException(e);
             } catch (IOException e) {
