@@ -12,7 +12,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.util.ArrayList;
 
 public class SignupView extends JPanel implements ActionListener, PropertyChangeListener {
     public final String viewName = "sign up";
@@ -66,11 +65,15 @@ public class SignupView extends JPanel implements ActionListener, PropertyChange
 
         JPopupMenu popUpMenu = new JPopupMenu();
 
-        JCheckBox lactoseIntolerant = new JCheckBox("Lactose Intolerant");
-        JCheckBox highBP = new JCheckBox("High Blood Pressure");
+        JCheckBox dairyFree = new JCheckBox("dairy-free");
+        JCheckBox glutenFree = new JCheckBox("gluten-free");
+        JCheckBox peanutFree = new JCheckBox("peanut-free");
+        JCheckBox vegetarian = new JCheckBox("vegetarian");
 
-        popUpMenu.add(lactoseIntolerant);
-        popUpMenu.add(highBP);
+        popUpMenu.add(dairyFree);
+        popUpMenu.add(glutenFree);
+        popUpMenu.add(peanutFree);
+        popUpMenu.add(vegetarian);
 
         dietaryRestrictionButton.addActionListener(new ActionListener() {
             @Override
@@ -79,30 +82,58 @@ public class SignupView extends JPanel implements ActionListener, PropertyChange
             }
         });
 
-        lactoseIntolerant.addActionListener(new ActionListener() {
+        dairyFree.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (lactoseIntolerant.isSelected()) {
+                if (dairyFree.isSelected()) {
                     SignupState currentState = signupViewModel.getState();
-                    currentState.addRestriction(lactoseIntolerant.getText());
+                    currentState.addRestriction(dairyFree.getText());
                 }
                 else {
                     SignupState currentState = signupViewModel.getState();
-                    currentState.removeRestriction(lactoseIntolerant.getText());
+                    currentState.removeRestriction(dairyFree.getText());
                 }
             }
         });
 
-        highBP.addActionListener(new ActionListener() {
+        glutenFree.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (highBP.isSelected()) {
+                if (glutenFree.isSelected()) {
                     SignupState currentState = signupViewModel.getState();
-                    currentState.addRestriction(highBP.getText());
+                    currentState.addRestriction(glutenFree.getText());
                 }
                 else {
                     SignupState currentState = signupViewModel.getState();
-                    currentState.removeRestriction(highBP.getText());
+                    currentState.removeRestriction(glutenFree.getText());
+                }
+            }
+        });
+
+        peanutFree.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (peanutFree.isSelected()) {
+                    SignupState currentState = signupViewModel.getState();
+                    currentState.addRestriction(peanutFree.getText());
+                }
+                else {
+                    SignupState currentState = signupViewModel.getState();
+                    currentState.removeRestriction(peanutFree.getText());
+                }
+            }
+        });
+
+        vegetarian.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (vegetarian.isSelected()) {
+                    SignupState currentState = signupViewModel.getState();
+                    currentState.addRestriction(vegetarian.getText());
+                }
+                else {
+                    SignupState currentState = signupViewModel.getState();
+                    currentState.removeRestriction(vegetarian.getText());
                 }
             }
         });
