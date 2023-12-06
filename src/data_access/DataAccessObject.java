@@ -75,6 +75,7 @@ public class DataAccessObject implements ExerciseDataAccessInterface, LoginUserD
             this.save();
         } else {
             try (BufferedReader reader = new BufferedReader(new FileReader(csvFile))) {
+                String header = reader.readLine();
                 String row;
                 while ((row = reader.readLine()) != null) {
                     String[] col = row.split(",");
@@ -83,6 +84,7 @@ public class DataAccessObject implements ExerciseDataAccessInterface, LoginUserD
                         col[headers.get("recommendedDailyCalories")] = String.valueOf(calories);
                     }
                 }
+                this.save();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             } ;
