@@ -11,6 +11,7 @@ import interface_adapter.DailyCalorieCalculatorController;
 import use_case.DailyCalorieCalculator.DailyCalorieCalculatorInteractor;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Dictionary;
@@ -68,14 +69,20 @@ public class WeeklyDietInteractor implements WeeklyDietInputBoundary {
                 query.put("health", dietaryRestrictions.get(i));
             }
 
+            Dictionary<String, ArrayList<String>> result = new Hashtable<>();
             try {
-                JSONObject result = EdamamAPICall.RecipeUrl(query);
+                result = EdamamAPICall.RecipeUrl(query);
             } catch (JSONException e) {
                 throw new RuntimeException(e);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-            MealInfo recipe = new MealInfo();
+            String key = result.keys().nextElement();
+            ArrayList<String> value = result.get(key);
+            MealInfo recipe = new MealInfo(key, value.get(0), Integer.parseInt(value.get(1)),
+                    Float.parseFloat(value.get(2)), Float.parseFloat(value.get(3)), Float.parseFloat(value.get(4)),
+                    Float.parseFloat(value.get(5)), Float.parseFloat(value.get(6)), Float.parseFloat(value.get(7)),
+                    Float.parseFloat(value.get(8)), value.get(9).split(","));
 
             if (!weeklyDietDataAccessObject.recipeSaved(recipe, userProfile)) {
                 if (mealTypeInt < 3) {
